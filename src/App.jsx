@@ -4,8 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import Upload from "./Upload";
 import { HomePage } from "./HomePage";
-import { HeaderFooterLayout } from "./components/HeaderFooterLayout";
-import { Temp } from "./components/Temp";
+import { Header } from "./components/Header";
 
 const routes = {
   "/": () => <HomePage />,
@@ -25,10 +24,9 @@ const App = () => {
 
   return (
     <>
-      <Temp />
       <CssBaseline />
+      <Header />
       <AppRouts />
-      {/* </HeaderFooterLayout> */}
     </>
   );
 };
