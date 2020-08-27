@@ -18,6 +18,47 @@ const theme = createMuiTheme({
     },
   },
   overrides: {
+    MuiTypography: {
+      h1: {
+        fontFamily: "FiraSans",
+        fontSize: 60,
+        lineHeight: "1.25",
+        fontWeight: "bold",
+        textAlign: "left",
+        color: "#292d34",
+      },
+      h2: {
+        fontFamily: "FiraSans",
+        fontSize: 55,
+        fontWeight: "bold",
+        textAlign: "left",
+        color: "#292d34",
+      },
+      h3: {
+        fontFamily: "FiraSans",
+        fontSize: 32,
+        lineHeight: "2.34",
+        fontWeight: "bold",
+        textAlign: "left",
+        color: "#292d34",
+      },
+      h4: {
+        fontFamily: "FiraSans",
+        fontSize: 25,
+        fontWeight: "bold",
+        textAlign: "center",
+        color: "#292d34",
+        lineHeight: "1.2",
+        letterSpacing: "-1px",
+      },
+      body1: {
+        fontFamily: "OpenSans",
+        fontSize: 17,
+        textAlign: "left",
+        color: "#757e75",
+        lineHeight: "1.5",
+      },
+    },
     MuiButton: {
       root: {
         fontFamily: "Poppins",

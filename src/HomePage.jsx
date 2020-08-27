@@ -1,5 +1,11 @@
 import React from "react";
 
+import { StayInformed } from "./components/StayInformed";
+
 export const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <StayInformed />
+    </div>
+  );
 };
