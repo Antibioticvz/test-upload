@@ -44,11 +44,10 @@ const theme = createMuiTheme({
       },
       h4: {
         fontFamily: "FiraSans",
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
-        color: "#292d34",
-        lineHeight: "1.2",
+        color: "#757e75",
         letterSpacing: "-1px",
       },
       body1: {
