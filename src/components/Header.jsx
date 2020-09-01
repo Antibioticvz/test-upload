@@ -115,7 +115,7 @@ export const Header = () => {
             <Button component={MiButton} href="/">
               pricing
             </Button>
-            <Button component={MiButton} href="/">
+            <Button component={MiButton} href="/ourstory">
               our Story
             </Button>
             <Button component={MiButton} href="/">
