@@ -51,10 +51,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "24px 7px 30px 7px",
   },
   text: {
-    margin: "5px 7px 10px 7px",
+    margin: "10px 7px 15px 7px",
     fontFamily: "FiraSans",
     fontSize: 24,
-    lineHeight: 1.75,
+    lineHeight: 1.7,
     letterSpacing: "normal",
     color: "#60656f",
   },

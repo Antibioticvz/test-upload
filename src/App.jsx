@@ -5,6 +5,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Upload from "./Upload";
 import { HomePage } from "./HomePage";
 import { OurStory } from "./OurStory";
+import { ContactUs } from "./ContactUs";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
@@ -12,6 +13,7 @@ const routes = {
   "/": () => <HomePage />,
   "/upload": () => <Upload />,
   "/ourstory": () => <OurStory />,
+  "/contactus": () => <ContactUs />,
 };
 
 const AppRouts = () => {
