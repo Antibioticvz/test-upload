@@ -4,10 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: 335,
+    marginBottom: 230,
   },
   gridButtons: {
     marginTop: 60,
@@ -24,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submitButton: {
     marginTop: 18,
+  },
+  sub: {
+    ontSize: 14,
+    margin: "22px 0 0",
+    textAlign: "center",
   },
 }));
 
@@ -66,6 +72,11 @@ export const Login = () => {
           >
             Create Account
           </Button>
+
+          <Typography className={classes.sub} variant="body1">
+            By signing up you agree to Readtronic's Terms of Service and Privacy
+            Policy.
+          </Typography>
         </Grid>
         <Grid item xs={12} sm={4}></Grid>
       </Grid>
