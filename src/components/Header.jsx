@@ -124,7 +124,7 @@ export const Header = () => {
           </div>
           <Button
             component={MiButton}
-            href="/upload"
+            href="/login"
             variant="contained"
             color="primary"
           >
