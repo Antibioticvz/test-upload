@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "22px 0 0",
     textAlign: "center",
   },
+  button: {
+    fontWeight: "bold",
+  },
 }));
 
 export const Login = () => {
@@ -41,11 +44,15 @@ export const Login = () => {
       <Grid className={classes.gridButtons} container>
         <Grid item xs={false} sm={4}></Grid>
         <Grid item xs={6} sm={2}>
-          <Button fullWidth>Sign up</Button>
+          <Button className={classes.button} fullWidth>
+            Sign up
+          </Button>
           <Divider />
         </Grid>
         <Grid item xs={6} sm={2}>
-          <Button fullWidth>Login</Button>
+          <Button className={classes.button} fullWidth>
+            Login
+          </Button>
           <Divider />
         </Grid>
         <Grid item xs={false} sm={4}></Grid>
