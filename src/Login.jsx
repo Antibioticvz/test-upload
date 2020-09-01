@@ -6,8 +6,13 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
+import Back from "./images/back.svg";
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${Back})`,
+    backgroundSize: "contain",
     marginBottom: 230,
   },
   gridButtons: {

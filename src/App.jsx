@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useRoutes } from "hookrouter";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import Upload from "./Upload";
+import { Upload } from "./Upload";
 import { HomePage } from "./HomePage";
 import { OurStory } from "./OurStory";
 import { ContactUs } from "./ContactUs";

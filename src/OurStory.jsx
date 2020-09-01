@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Kevin from "./images/Kevin.png";
 import Boys from "./images/boys.jpg";
 
+import Back from "./images/back.svg";
+
 const useStyles = makeStyles((theme) => ({
   avatarContainer: {
     display: "flex",
@@ -13,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     paddingBottom: 122,
+    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${Back})`,
+    backgroundSize: "contain",
   },
   gridContainer: {},
   avatar: {
