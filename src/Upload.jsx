@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
 import { HorizontalStepper } from "./components/HorizontalStepper";
@@ -14,6 +13,8 @@ import Back from "./images/back.svg";
 import Miscellaneous from "./images/miscellaneous.svg";
 import MiscellaneousGray from "./images/miscellaneousGray.svg";
 import MiscellaneousWhite from "./images/miscellaneousWhite.svg";
+import Text from "./images/text.svg";
+import File from "./images/file.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 14,
     border: "dashed 1px rgba(117, 126, 117, 0.3)",
   },
-  headerText: {
+  headerTextBox: {
     opacity: 0.55,
     fontFamily: "FiraSans",
     fontSize: 20,
@@ -100,6 +101,26 @@ const useStyles = makeStyles((theme) => ({
   submitContainer: {
     padding: 24,
   },
+  headerContainer: { display: "flex", flexDirection: "column" },
+  headerImgContainer: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "left",
+
+    background: "#fff",
+  },
+  headerText: {
+    fontSize: 26,
+    fontWeight: "bold",
+    lineHeight: 2,
+    letterSpacing: "-1.04",
+    textAlign: "left",
+    color: "#292d34",
+  },
+  headerImg: {
+    width: 60,
+    marginLeft: "7%",
+  },
 }));
 
 export const Upload = () => {
@@ -144,11 +165,20 @@ export const Upload = () => {
       <Grid className={classes.gridContainer} container>
         <Grid item xs={false} sm={1}></Grid>
         <Grid item xs={12} sm={10} className={classes.wrapper}>
+          <div className={classes.headerContainer}>
+            <div className={classes.headerImgContainer}>
+              <img className={classes.headerImg} src={File} />
+              <Typography className={classes.headerText} variant="body1">
+                File to audio
+              </Typography>
+            </div>
+          </div>
+
           <div className={classes.uploadBox}>
             <div className={classes.dropBox} {...getRootProps()}>
               <input {...getInputProps()} />
               <br />
-              <Typography className={classes.headerText}>
+              <Typography className={classes.headerTextBox}>
                 Drag and drop file here (doc, text, word)
               </Typography>
               <Typography className={classes.orText}>Or</Typography>
@@ -194,7 +224,50 @@ export const Upload = () => {
                   />
                 }
               >
-                Submit
+                Upload File
+              </Button>
+            </div>
+          </div>
+
+          <br />
+          <Typography className={classes.orText}>Or</Typography>
+          <br />
+
+          <div className={classes.headerContainer}>
+            <div className={classes.headerImgContainer}>
+              <img className={classes.headerImg} src={Text} />
+              <Typography className={classes.headerText} variant="body1">
+                Text to audio
+              </Typography>
+            </div>
+          </div>
+
+          <div className={classes.uploadBox}>
+            <TextField
+              className={classes.multiText}
+              fullWidth
+              multiline
+              rows={13}
+              placeholder=" Write or Paste any text here. (The first line will be the title)"
+            />
+          </div>
+
+          <div className={classes.stepSubmitContainer}>
+            <HorizontalStepper
+              steps={["Upload", "Convert", "Done"]}
+              activeStep={activeStepUpload}
+            />
+            <div className={classes.submitContainer}>
+              <Button
+                className={classes.submitButton}
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  onUpload();
+                }}
+                disabled={!uploadFile && activeStepUpload !== 2}
+              >
+                Convert
               </Button>
             </div>
           </div>
