@@ -58,6 +58,13 @@ const theme = createMuiTheme({
         lineHeight: "1.5",
       },
     },
+    MuiStepLabel: {
+      alternativeLabel: {
+        fontFamily: "FiraSans",
+        fontSize: 17,
+        letterSpacing: "-0.68px",
+      },
+    },
     MuiButton: {
       root: {
         fontFamily: "Poppins",

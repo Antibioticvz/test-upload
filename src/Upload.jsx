@@ -1,7 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+import axios from "axios";
 import { useDropzone } from "react-dropzone";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { green } from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
@@ -12,6 +13,11 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import StepConnector from "@material-ui/core/StepConnector";
+import Check from "@material-ui/icons/Check";
 
 import Back from "./images/back.svg";
 import Miscellaneous from "./images/miscellaneous.svg";
@@ -94,97 +100,157 @@ const useStyles = makeStyles((theme) => ({
   uploadIcon: {
     marginRight: 10,
   },
-
-  buttonSuccess: {
-    backgroundColor: green[500],
-    "&:hover": {
-      backgroundColor: green[700],
-    },
+  stepperRoot: {
+    width: "56%",
   },
-  fabProgress: {
-    color: green[500],
-    position: "absolute",
-    top: -6,
-    left: -6,
-    zIndex: 1,
+  stepSubmitContainer: {
+    justifyContent: "space-between",
+    display: "flex",
   },
-  buttonProgress: {
-    color: green[500],
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginTop: -12,
-    marginLeft: -12,
+  submitContainer: {
+    padding: 24,
   },
 }));
 
-const Dropzone = () => {
-  const classes = useStyles();
+function getSteps() {
+  return ["Upload", "Convert", "Done"];
+}
 
-  const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
+const QontoConnector = withStyles({
+  alternativeLabel: {
+    top: 10,
+    left: "calc(-50% + 11px)",
+    right: "calc(50% + 11px)",
+  },
+  active: {
+    "& $line": {
+      borderColor: "#4279f1",
+    },
+  },
+  completed: {
+    "& $line": {
+      borderColor: "#4279f1",
+    },
+  },
+  line: {
+    borderColor: "#d9e4fc",
+    borderTopWidth: 3,
+    borderRadius: 1,
+  },
+})(StepConnector);
 
-      reader.onabort = () => console.log("file reading was aborted");
-      reader.onerror = () => console.log("file reading has failed");
-      reader.onload = () => {
-        // Do whatever you want with the file contents
-        const binaryStr = reader.result;
-        console.log(binaryStr);
-      };
-      reader.readAsArrayBuffer(file);
-    });
-  }, []);
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+const useQontoStepIconStyles = makeStyles({
+  root: {
+    color: "#eaeaf0",
+    display: "flex",
+    height: 22,
+  },
+  active: {
+    color: "#4279f1",
+  },
+  circleContainer: {
+    display: "flex",
+    width: 22,
+    height: 22,
+    borderRadius: "50%",
+    backgroundColor: "#4279f1",
+  },
+  circle: {
+    width: 22,
+    height: 22,
+    margin: "auto",
+    borderRadius: "50%",
+    backgroundColor: "#d9e4fc",
+  },
+  completed: {
+    color: "#fff",
+    margin: "auto",
+    zIndex: 1,
+    fontSize: 18,
+  },
+});
+
+const QontoStepIcon = (props) => {
+  const classes = useQontoStepIconStyles();
+  const { active, completed } = props;
 
   return (
-    <div className={classes.dropBox} {...getRootProps()}>
-      <input {...getInputProps()} />
-      <br />
-      <Typography className={classes.headerText}>
-        Drag and drop file here (doc, text, word)
-      </Typography>
-      <Typography className={classes.orText}>Or</Typography>
-      <div className={classes.uploadFakeButton}>
-        <div className={classes.textFakeButtonContainer}>
-          <img className={classes.uploadIcon} src={Miscellaneous} />
-          <Typography className={classes.fakeButtonText}>
-            Browse File
-          </Typography>
+    <div
+      className={clsx(classes.root, {
+        [classes.active]: active,
+      })}
+    >
+      {completed ? (
+        <div className={classes.circleContainer}>
+          <Check className={classes.completed} />
         </div>
-      </div>
-      <br />
+      ) : (
+        <div className={classes.circle} />
+      )}
+    </div>
+  );
+};
+
+export const HorizontalStepper = () => {
+  const classes = useStyles();
+  const [activeStep, setActiveStep] = useState(0);
+  const steps = getSteps();
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  return (
+    <div className={classes.stepperRoot}>
+      <Stepper
+        activeStep={activeStep}
+        alternativeLabel
+        connector={<QontoConnector />}
+      >
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel StepIconComponent={QontoStepIcon} icon={null}>
+              {label}
+            </StepLabel>
+          </Step>
+        ))}
+      </Stepper>
     </div>
   );
 };
 
 export const Upload = () => {
   const classes = useStyles();
+  const formData = new FormData();
 
-  // const [loading, setLoading] = React.useState(false);
-  // const [success, setSuccess] = React.useState(false);
-  // const timer = React.useRef();
+  const [uploadFile, setUploadFile] = useState(false);
 
-  // const buttonClassname = clsx({
-  //   [classes.buttonSuccess]: success,
-  // });
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      console.log("formData");
+      console.log(file);
+      // reader.readAsArrayBuffer(file);
 
-  // React.useEffect(() => {
-  //   return () => {
-  //     clearTimeout(timer.current);
-  //   };
-  // }, []);
+      console.log(formData);
+      formData.append("myFile", file, file.name);
 
-  // const handleButtonClick = () => {
-  //   if (!loading) {
-  //     setSuccess(false);
-  //     setLoading(true);
-  //     timer.current = setTimeout(() => {
-  //       setSuccess(true);
-  //       setLoading(false);
-  //     }, 2000);
-  //   }
-  // };
+      formData.append("user_id", "aYxXrN6MLvXZpC7ZtEMymn7X2Nv1");
+
+      setUploadFile(true);
+    },
+    [formData]
+  );
+  const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
+  const onUpload = () => {
+    // Request made to the backend api
+    // Send formData object
+    axios.post(
+      "https://us-central1-readtronic-b58a6.cloudfunctions.net/api/v1/upload",
+      formData
+    );
+  };
 
   return (
     <div className={classes.root}>
@@ -192,7 +258,42 @@ export const Upload = () => {
         <Grid item xs={false} sm={1}></Grid>
         <Grid item xs={12} sm={10} className={classes.wrapper}>
           <div className={classes.uploadBox}>
-            <Dropzone />
+            <div className={classes.dropBox} {...getRootProps()}>
+              <input {...getInputProps()} />
+              <br />
+              <Typography className={classes.headerText}>
+                Drag and drop file here (doc, text, word)
+              </Typography>
+              <Typography className={classes.orText}>Or</Typography>
+              <div className={classes.uploadFakeButton}>
+                <div className={classes.textFakeButtonContainer}>
+                  <img
+                    className={classes.uploadIcon}
+                    src={Miscellaneous}
+                    alt=""
+                  />
+                  <Typography className={classes.fakeButtonText}>
+                    Browse File
+                  </Typography>
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+
+          <div className={classes.stepSubmitContainer}>
+            <HorizontalStepper />
+            <div className={classes.submitContainer}>
+              <Button
+                className={classes.submitButton}
+                variant="contained"
+                color="primary"
+                onClick={() => onUpload()}
+                disabled={!uploadFile}
+              >
+                Submit
+              </Button>
+            </div>
           </div>
         </Grid>
         <Grid item xs={false} sm={1}></Grid>
@@ -200,84 +301,3 @@ export const Upload = () => {
     </div>
   );
 };
-
-// import axios from "axios";
-
-// import React, { Component } from "react";
-
-// export class Upload extends Component {
-//   state = {
-//     // Initially, no file is selected
-//     selectedFile: null,
-//   };
-
-//   // On file select (from the pop up)
-//   onFileChange = (event) => {
-//     // Update the state
-//     this.setState({ selectedFile: event.target.files[0] });
-//   };
-
-//   // On file upload (click the upload button)
-//   onFileUpload = () => {
-//     // Create an object of formData
-//     const formData = new FormData();
-//     console.log(formData);
-//     // Update the formData object
-//     formData.append(
-//       "myFile",
-//       this.state.selectedFile,
-//       this.state.selectedFile.name
-//     );
-
-//     formData.append("user_id", "aYxXrN6MLvXZpC7ZtEMymn7X2Nv1");
-
-//     // Details of the uploaded file
-//     console.log(this.state.selectedFile);
-
-//     // Request made to the backend api
-//     // Send formData object
-//     axios.post(
-//       "https://us-central1-readtronic-b58a6.cloudfunctions.net/api/v1/upload",
-//       formData
-//     );
-//   };
-
-//   // File content to be displayed after
-//   // file upload is complete
-//   fileData = () => {
-//     if (this.state.selectedFile) {
-//       return (
-//         <div>
-//           <h2>File Details:</h2>
-//           <p>File Name: {this.state.selectedFile.name}</p>
-//           <p>File Type: {this.state.selectedFile.type}</p>
-//           <p>
-//             Last Modified:{" "}
-//             {this.state.selectedFile.lastModifiedDate.toDateString()}
-//           </p>
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <div>
-//           <br />
-//           <h4>Choose before Pressing the Upload button</h4>
-//         </div>
-//       );
-//     }
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <h1>Readtronic</h1>
-//         <h3>File Upload</h3>
-//         <div>
-//           <input type="file" onChange={this.onFileChange} />
-//           <button onClick={this.onFileUpload}>Upload!</button>
-//         </div>
-//         {this.fileData()}
-//       </div>
-//     );
-//   }
-// }
