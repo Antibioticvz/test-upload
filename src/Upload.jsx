@@ -1,26 +1,19 @@
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { useDropzone } from "react-dropzone";
-import clsx from "clsx";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import { green } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
-import CheckIcon from "@material-ui/icons/Check";
-import SaveIcon from "@material-ui/icons/Save";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import StepConnector from "@material-ui/core/StepConnector";
-import Check from "@material-ui/icons/Check";
+
+import { HorizontalStepper } from "./components/HorizontalStepper";
 
 import Back from "./images/back.svg";
 import Miscellaneous from "./images/miscellaneous.svg";
+import MiscellaneousGray from "./images/miscellaneousGray.svg";
+import MiscellaneousWhite from "./images/miscellaneousWhite.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,9 +93,6 @@ const useStyles = makeStyles((theme) => ({
   uploadIcon: {
     marginRight: 10,
   },
-  stepperRoot: {
-    width: "56%",
-  },
   stepSubmitContainer: {
     justifyContent: "space-between",
     display: "flex",
@@ -112,118 +102,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function getSteps() {
-  return ["Upload", "Convert", "Done"];
-}
-
-const QontoConnector = withStyles({
-  alternativeLabel: {
-    top: 10,
-    left: "calc(-50% + 11px)",
-    right: "calc(50% + 11px)",
-  },
-  active: {
-    "& $line": {
-      borderColor: "#4279f1",
-    },
-  },
-  completed: {
-    "& $line": {
-      borderColor: "#4279f1",
-    },
-  },
-  line: {
-    borderColor: "#d9e4fc",
-    borderTopWidth: 3,
-    borderRadius: 1,
-  },
-})(StepConnector);
-
-const useQontoStepIconStyles = makeStyles({
-  root: {
-    color: "#eaeaf0",
-    display: "flex",
-    height: 22,
-  },
-  active: {
-    color: "#4279f1",
-  },
-  circleContainer: {
-    display: "flex",
-    width: 22,
-    height: 22,
-    borderRadius: "50%",
-    backgroundColor: "#4279f1",
-  },
-  circle: {
-    width: 22,
-    height: 22,
-    margin: "auto",
-    borderRadius: "50%",
-    backgroundColor: "#d9e4fc",
-  },
-  completed: {
-    color: "#fff",
-    margin: "auto",
-    zIndex: 1,
-    fontSize: 18,
-  },
-});
-
-const QontoStepIcon = (props) => {
-  const classes = useQontoStepIconStyles();
-  const { active, completed } = props;
-
-  return (
-    <div
-      className={clsx(classes.root, {
-        [classes.active]: active,
-      })}
-    >
-      {completed ? (
-        <div className={classes.circleContainer}>
-          <Check className={classes.completed} />
-        </div>
-      ) : (
-        <div className={classes.circle} />
-      )}
-    </div>
-  );
-};
-
-export const HorizontalStepper = () => {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(0);
-  const steps = getSteps();
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  return (
-    <div className={classes.stepperRoot}>
-      <Stepper
-        activeStep={activeStep}
-        alternativeLabel
-        connector={<QontoConnector />}
-      >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={QontoStepIcon} icon={null}>
-              {label}
-            </StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-    </div>
-  );
-};
-
 export const Upload = () => {
   const classes = useStyles();
   const formData = new FormData();
 
   const [uploadFile, setUploadFile] = useState(false);
+  const [activeStepUpload, setActiveStepUpload] = useState(0);
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -238,6 +122,8 @@ export const Upload = () => {
       formData.append("user_id", "aYxXrN6MLvXZpC7ZtEMymn7X2Nv1");
 
       setUploadFile(true);
+      setActiveStepUpload(1);
+      setTimeout(() => setActiveStepUpload(2), 1000);
     },
     [formData]
   );
@@ -250,6 +136,7 @@ export const Upload = () => {
       "https://us-central1-readtronic-b58a6.cloudfunctions.net/api/v1/upload",
       formData
     );
+    setTimeout(() => setActiveStepUpload(3), 1000);
   };
 
   return (
@@ -282,14 +169,30 @@ export const Upload = () => {
           </div>
 
           <div className={classes.stepSubmitContainer}>
-            <HorizontalStepper />
+            <HorizontalStepper
+              steps={["Upload", "Convert", "Done"]}
+              activeStep={activeStepUpload}
+            />
             <div className={classes.submitContainer}>
               <Button
                 className={classes.submitButton}
                 variant="contained"
                 color="primary"
-                onClick={() => onUpload()}
-                disabled={!uploadFile}
+                onClick={() => {
+                  onUpload();
+                }}
+                disabled={!uploadFile && activeStepUpload !== 2}
+                startIcon={
+                  <img
+                    src={
+                      !uploadFile && activeStepUpload !== 2
+                        ? MiscellaneousGray
+                        : MiscellaneousWhite
+                    }
+                    alt=""
+                    color="red"
+                  />
+                }
               >
                 Submit
               </Button>
