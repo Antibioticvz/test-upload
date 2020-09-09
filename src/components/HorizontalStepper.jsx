@@ -85,6 +85,10 @@ const QontoStepIcon = (props) => {
 const useStyles = makeStyles((theme) => ({
   stepperRoot: {
     width: "56%",
+
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
 }));
 

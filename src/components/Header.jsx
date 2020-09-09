@@ -102,8 +102,20 @@ export const Header = () => {
         </Button>
       </MenuItem>
       <MenuItem>
-        <Button component={MiButton} href="/">
-          home
+        {auth && (
+          <Button component={MiButton} href="/upload">
+            upload
+          </Button>
+        )}
+      </MenuItem>
+      <MenuItem>
+        <Button component={MiButton} href="/ourstory">
+          our Story
+        </Button>
+      </MenuItem>
+      <MenuItem>
+        <Button component={MiButton} href="/contactus">
+          contact Us
         </Button>
       </MenuItem>
     </Menu>
@@ -119,9 +131,11 @@ export const Header = () => {
             <Button component={MiButton} href="/">
               home
             </Button>
-            <Button component={MiButton} href="/upload">
-              upload
-            </Button>
+            {auth && (
+              <Button component={MiButton} href="/upload">
+                upload
+              </Button>
+            )}
             <Button component={MiButton} href="/ourstory">
               our Story
             </Button>

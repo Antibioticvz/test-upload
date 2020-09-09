@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${Back})`,
     backgroundSize: "contain",
+    marginBottom: 330,
   },
   //
   wrapper: {
@@ -95,11 +96,19 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 10,
   },
   stepSubmitContainer: {
-    justifyContent: "space-between",
     display: "flex",
+    justifyContent: "space-between",
+
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   submitContainer: {
     padding: 24,
+
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto",
+    },
   },
   headerContainer: { display: "flex", flexDirection: "column" },
   headerImgContainer: {
