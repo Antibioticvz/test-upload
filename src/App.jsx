@@ -10,6 +10,8 @@ import { Login } from "./Login";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
+import { ContextProvider } from "./ContextAuth";
+
 const routes = {
   "/": () => <HomePage />,
   "/upload": () => <Upload />,
@@ -30,12 +32,12 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <ContextProvider>
       <CssBaseline />
       <Header />
       <AppRouts />
       <Footer />
-    </>
+    </ContextProvider>
   );
 };
 

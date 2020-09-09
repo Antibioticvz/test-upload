@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { navigate } from "hookrouter";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,6 +10,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 
 import MiButton from "./MiButton";
+
+import FirebaseContext from "../Firebase";
+import Context from "../ContextAuth";
 
 import Logo from "../images/logo.svg";
 
@@ -43,8 +47,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const Header = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const firebase = useContext(FirebaseContext);
+  const { auth, setAuth } = useContext(Context);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -122,14 +129,31 @@ export const Header = () => {
               contact Us
             </Button>
           </div>
-          <Button
-            component={MiButton}
-            href="/login"
-            variant="contained"
-            color="primary"
-          >
-            login
-          </Button>
+
+          {!auth ? (
+            <Button
+              component={MiButton}
+              href="/login"
+              variant="contained"
+              color="primary"
+            >
+              login
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                setAuth(!auth);
+                firebase.doSignOut();
+                navigate("/");
+                localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
+              }}
+            >
+              logout
+            </Button>
+          )}
+
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"

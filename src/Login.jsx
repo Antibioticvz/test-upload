@@ -9,6 +9,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
 import FirebaseContext from "./Firebase";
+import Context from "./ContextAuth";
 
 import Back from "./images/back.svg";
 
@@ -52,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 const New = () => {
   const classes = useStyles();
   const firebase = useContext(FirebaseContext);
+  const { setAuth } = useContext(Context);
 
   const [errMessage, setErrMessage] = useState(null);
   const [email, setEmail] = useState("");
@@ -62,7 +64,7 @@ const New = () => {
     firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        console.log(authUser.user.uid);
+        setAuth(true);
         localStorage.setItem(
           process.env.REACT_APP_LOCAL_STORAGE,
           authUser.user.uid
@@ -129,6 +131,7 @@ const New = () => {
 const Old = () => {
   const classes = useStyles();
   const firebase = useContext(FirebaseContext);
+  const { setAuth } = useContext(Context);
 
   const [errMessage, setErrMessage] = useState(null);
   const [email, setEmail] = useState("");
@@ -144,7 +147,7 @@ const Old = () => {
     firebase
       .doSignInWithEmailAndPassword(email, password)
       .then((authUser) => {
-        console.log(authUser.user.uid);
+        setAuth(true);
         localStorage.setItem(
           process.env.REACT_APP_LOCAL_STORAGE,
           authUser.user.uid
@@ -188,7 +191,7 @@ const Old = () => {
 
 export const Login = () => {
   const classes = useStyles();
-  const [screen, setScreen] = useState(0);
+  const [screen, setScreen] = useState(1);
 
   const screenToShow = () => {
     switch (screen) {
@@ -197,7 +200,7 @@ export const Login = () => {
       case 1:
         return <Old />;
       default:
-        return <New />;
+        break;
     }
   };
 
