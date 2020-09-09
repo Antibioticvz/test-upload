@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     margin: "10px 7px 15px 7px",
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 24,
     lineHeight: 1.7,
     letterSpacing: "normal",

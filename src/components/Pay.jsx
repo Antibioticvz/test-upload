@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     border: "solid 1px #e4e5e4",
   },
   mainPrice: {
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 50,
     fontWeight: "bold",
     fontStretch: "normal",
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
   flag: { marginTop: "-41px" },
   oldPrice: {
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontWeight: 500,
     fontSize: 29,
     textDecoration: "line-through",
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#4279f1",
   },
   period: {
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: "15px",
     fontWeight: "normal",
     fontStretch: "normal",
@@ -106,14 +106,14 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto 3px auto",
   },
   listText: {
-    fontFamily: "OpenSans",
+    fontFamily: "Open Sans",
     fontSize: 17,
     fontWeight: "bold",
     lineHeight: "1.12",
     color: "#292d34",
   },
   listTextNo: {
-    fontFamily: "OpenSans",
+    fontFamily: "Open Sans",
     fontSize: 17,
     fontWeight: "bold",
     lineHeight: "1.12",
@@ -128,14 +128,14 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#4279f1",
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 18,
   },
   buttonBasic: {
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#fff",
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 18,
   },
   buttonPro: {
@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#fff",
     backgroundColor: "#674af8",
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 18,
   },
 }));

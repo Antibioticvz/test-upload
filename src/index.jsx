@@ -4,6 +4,8 @@ import { ThemeProvider } from "@material-ui/core/styles";
 
 import App from "./App";
 import theme from "./theme";
+
+// import "./fonts.css";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(

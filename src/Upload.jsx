@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   headerTextBox: {
     opacity: 0.55,
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 20,
     fontWeight: "normal",
     fontStretch: "normal",
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   },
   orText: {
     opacity: 0.5,
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 20,
     fontWeight: "bold",
     fontStretch: "normal",
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fakeButtonText: {
     margin: "auto",
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 16,
     fontWeight: "bold",
     letterSpacing: "-0.64px",

@@ -4,7 +4,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: "OpenSans, FiraSans, Poppins",
+    fontFamily: "-apple-system,Open Sans,Fira Sans,Poppins",
   },
   palette: {
     primary: {
@@ -20,7 +20,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       h1: {
-        fontFamily: "FiraSans",
+        fontFamily: "Fira Sans",
         fontSize: 60,
         lineHeight: "1.25",
         fontWeight: "bold",
@@ -28,14 +28,14 @@ const theme = createMuiTheme({
         color: "#292d34",
       },
       h2: {
-        fontFamily: "FiraSans",
+        fontFamily: "Fira Sans",
         fontSize: 55,
         fontWeight: "bold",
         textAlign: "left",
         color: "#292d34",
       },
       h3: {
-        fontFamily: "FiraSans",
+        fontFamily: "Fira Sans",
         fontSize: 32,
         lineHeight: "2.34",
         fontWeight: "bold",
@@ -43,7 +43,7 @@ const theme = createMuiTheme({
         color: "#292d34",
       },
       h4: {
-        fontFamily: "FiraSans",
+        fontFamily: "Fira Sans",
         fontSize: 30,
         fontWeight: "bold",
         textAlign: "center",
@@ -51,7 +51,7 @@ const theme = createMuiTheme({
         letterSpacing: "-1px",
       },
       body1: {
-        fontFamily: "OpenSans",
+        fontFamily: "Open Sans",
         fontSize: 17,
         textAlign: "left",
         color: "#757e75",
@@ -60,7 +60,7 @@ const theme = createMuiTheme({
     },
     MuiStepLabel: {
       alternativeLabel: {
-        fontFamily: "FiraSans",
+        fontFamily: "Fira Sans",
         fontSize: 17,
         letterSpacing: "-0.68px",
       },
