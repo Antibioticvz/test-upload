@@ -112,7 +112,7 @@ const SliderComponent = () => {
             className={"header header-1" + " " + classes.header}
             variant="h1"
           >
-            LISTEN
+            ADD
           </Typography>
           <img
             src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Find___No+Label%403x.png"
@@ -124,7 +124,7 @@ const SliderComponent = () => {
             className={"header header-2" + " " + classes.header}
             variant="h1"
           >
-            SHARE
+            FIND
           </Typography>
           <img
             src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Share___no+label%403x.png"
@@ -136,7 +136,7 @@ const SliderComponent = () => {
             className={"header header-3" + " " + classes.header}
             variant="h1"
           >
-            FIND
+            LISTEN
           </Typography>
           <img
             src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Listen__3+Articles%403x.png"
