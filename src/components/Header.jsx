@@ -18,13 +18,14 @@ import Logo from "../images/logo.svg";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    marginTop: 40,
+    padding: 24,
     flexGrow: 1,
     [theme.breakpoints.down("md")]: {
-      marginTop: 20,
+      // marginTop: 20,
+      padding: "24px 16px",
     },
     [theme.breakpoints.down("sm")]: {
-      marginTop: 5,
+      padding: 12,
     },
   },
   sectionDesktop: {
@@ -151,7 +152,7 @@ export const Header = () => {
               Sharing
             </Button>
           </div>
-
+          {/* 
           {!auth ? (
             <Button
               component={MiButton}
@@ -173,9 +174,8 @@ export const Header = () => {
               }}
             >
               logout
-            </Button>
-          )}
-
+            </Button> 
+          )}*/}
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"

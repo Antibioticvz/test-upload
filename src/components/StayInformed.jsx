@@ -181,6 +181,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${Back})`,
     backgroundSize: "contain",
+
+    padding: 24,
+    flexGrow: 1,
+    [theme.breakpoints.down("md")]: {
+      // marginTop: 20,
+      padding: "24px 16px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: 12,
+    },
   },
   textContainer: {
     marginTop: "20%",
