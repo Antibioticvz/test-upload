@@ -104,6 +104,7 @@ export const Sharing = () => {
           app.
         </Typography>
 
+        <br />
         <Button
           className={classes.button}
           fullWidth
