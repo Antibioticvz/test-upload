@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { navigate } from "hookrouter";
 import * as EmailValidator from "email-validator";
 import { makeStyles } from "@material-ui/core/styles";
@@ -189,9 +189,11 @@ const Old = () => {
   );
 };
 
-export const Login = () => {
+export const Login = ({ tab }) => {
   const classes = useStyles();
-  const [screen, setScreen] = useState(1);
+  const [screen, setScreen] = useState(Number(tab));
+
+  useEffect(() => setScreen(Number(tab)), [tab]);
 
   const screenToShow = () => {
     switch (screen) {

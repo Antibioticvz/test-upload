@@ -19,7 +19,7 @@ const routes = {
   "/ourstory": () => <OurStory />,
   "/contactus": () => <ContactUs />,
   "/sharing": () => <Sharing />,
-  "/login": () => <Login />,
+  "/login/:tab": ({ tab }) => <Login tab={tab} />,
 };
 
 const AppRouts = () => {

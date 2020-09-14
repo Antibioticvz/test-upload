@@ -8,7 +8,6 @@ import { FAQ } from "./components/Faq";
 
 export const HomePage = () => {
   const path = usePath();
-  console.log(path);
   const myRef = useRef(null);
 
   useLayoutEffect(() => {
