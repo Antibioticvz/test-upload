@@ -9,6 +9,8 @@ import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
 import Gstore from "../images/Gstore.svg";
 
+import Blob from "../images/Blob.png";
+
 import "../sliderStyle.scss";
 
 class Slider {
@@ -29,15 +31,15 @@ class Slider {
   }
 
   item_3Click = () => {
-    this.items[0].removeEventListener("click", this.item_1Click);
-    this.items[2].removeEventListener("click", this.item_3Click);
-    this.next();
+    this.items[2].removeEventListener("click", this.item_1Click);
+    this.items[0].removeEventListener("click", this.item_3Click);
+    this.previous();
   };
 
   item_1Click = () => {
-    this.items[0].removeEventListener("click", this.item_1Click);
-    this.items[2].removeEventListener("click", this.item_3Click);
-    this.previous();
+    this.items[2].removeEventListener("click", this.item_1Click);
+    this.items[0].removeEventListener("click", this.item_3Click);
+    this.next();
   };
 
   listeners = () => {
@@ -58,19 +60,21 @@ class Slider {
   };
 
   next = () => {
-    this.items.unshift(this.items[2]);
-    this.headers.unshift(this.headers[2]);
-    this.items.pop();
-    this.headers.pop();
+    this.items.push(this.items[0]);
+    this.headers.push(this.headers[0]);
+    this.items.shift();
+    this.headers.shift();
+
     this.reclass();
     this.listeners();
   };
 
   previous = () => {
-    this.items.push(this.items[0]);
-    this.headers.push(this.headers[0]);
-    this.items.shift();
-    this.headers.shift();
+    this.items.unshift(this.items[2]);
+    this.headers.unshift(this.headers[2]);
+    this.items.pop();
+    this.headers.pop();
+
     this.reclass();
     this.listeners();
   };
@@ -87,6 +91,23 @@ const useStylesComponent = makeStyles((theme) => ({
       fontSize: 30,
     },
   },
+  sliderBg: {
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundPositionY: 85,
+    backgroundImage: `url(${Blob})`,
+    // backgroundSize: "contain",
+    backgroundSize: "85%",
+
+    [theme.breakpoints.down("md")]: {
+      backgroundPositionY: 88,
+      backgroundSize: "90%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundPositionY: 50,
+      backgroundSize: "55%",
+    },
+  },
 }));
 
 const SliderComponent = () => {
@@ -101,47 +122,53 @@ const SliderComponent = () => {
 
     setInterval(() => {
       slider.next();
-    }, 3000);
+    }, 4000);
   }, []);
 
   return (
     <>
-      <div id="slider" ref={elemRef} className="slider">
-        <div className="item item-1">
-          <Typography
-            className={"header header-1" + " " + classes.header}
-            variant="h1"
-          >
-            ADD
-          </Typography>
-          <img
-            src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Find___No+Label%403x.png"
-            alt="1"
-          />
-        </div>
-        <div className="item item-2">
-          <Typography
-            className={"header header-2" + " " + classes.header}
-            variant="h1"
-          >
-            FIND
-          </Typography>
-          <img
-            src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Share___no+label%403x.png"
-            alt="2"
-          />
-        </div>
-        <div className="item item-3">
-          <Typography
-            className={"header header-3" + " " + classes.header}
-            variant="h1"
-          >
-            LISTEN
-          </Typography>
-          <img
-            src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Listen__3+Articles%403x.png"
-            alt="3"
-          />
+      <div
+        id="slider"
+        ref={elemRef}
+        className={"slider" + " " + classes.sliderBg}
+      >
+        <div className={classes.sliderBg}>
+          <div className="item item-1">
+            <Typography
+              className={"header header-1" + " " + classes.header}
+              variant="h1"
+            >
+              LISTEN
+            </Typography>
+            <img
+              src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Listen__3+Articles%403x.png"
+              alt="1"
+            />
+          </div>
+          <div className="item item-2">
+            <Typography
+              className={"header header-2" + " " + classes.header}
+              variant="h1"
+            >
+              FIND
+            </Typography>
+            <img
+              src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Find___No+Label%403x.png"
+              alt="2"
+            />
+          </div>
+          <div className="item item-3">
+            <Typography
+              className={"header header-3" + " " + classes.header}
+              variant="h1"
+            >
+              ADD
+            </Typography>
+            <img
+              src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Share___no+label%403x.png"
+              alt="3"
+            />
+          </div>
         </div>
       </div>
     </>
