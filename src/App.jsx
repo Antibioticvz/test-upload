@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useRoutes } from "hookrouter";
+import { useRoutes, useRedirect } from "hookrouter";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { Upload } from "./Upload";
@@ -14,7 +14,7 @@ import { Footer } from "./components/Footer";
 import { ContextProvider } from "./ContextAuth";
 
 const routes = {
-  "/": () => <HomePage />,
+  "/home*": () => <HomePage />,
   "/upload": () => <Upload />,
   "/ourstory": () => <OurStory />,
   "/contactus": () => <ContactUs />,
@@ -23,6 +23,7 @@ const routes = {
 };
 
 const AppRouts = () => {
+  useRedirect("/", "/home");
   const routeResult = useRoutes(routes);
 
   return routeResult || <h1>Not found</h1>;

@@ -98,8 +98,13 @@ export const Header = () => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <Button component={MiButton} href="/">
+        <Button component={MiButton} href="/home">
           home
+        </Button>
+      </MenuItem>
+      <MenuItem>
+        <Button component={MiButton} href="/home/price">
+          pricing
         </Button>
       </MenuItem>
       <MenuItem>
@@ -134,8 +139,11 @@ export const Header = () => {
           <img src={Logo} alt="Logo" />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button component={MiButton} href="/">
+            <Button component={MiButton} href="/home">
               home
+            </Button>
+            <Button component={MiButton} href="/home/price">
+              pricing
             </Button>
             {auth && (
               <Button component={MiButton} href="/upload">
