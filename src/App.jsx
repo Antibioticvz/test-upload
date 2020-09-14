@@ -6,6 +6,7 @@ import { Upload } from "./Upload";
 import { HomePage } from "./HomePage";
 import { OurStory } from "./OurStory";
 import { ContactUs } from "./ContactUs";
+import { Sharing } from "./Sharing";
 import { Login } from "./Login";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
@@ -17,6 +18,7 @@ const routes = {
   "/upload": () => <Upload />,
   "/ourstory": () => <OurStory />,
   "/contactus": () => <ContactUs />,
+  "/sharing": () => <Sharing />,
   "/login": () => <Login />,
 };
 

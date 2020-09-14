@@ -118,6 +118,11 @@ export const Header = () => {
           contact Us
         </Button>
       </MenuItem>
+      <MenuItem>
+        <Button component={MiButton} href="/sharing">
+          Sharing
+        </Button>
+      </MenuItem>
     </Menu>
   );
 
@@ -141,6 +146,9 @@ export const Header = () => {
             </Button>
             <Button component={MiButton} href="/contactus">
               contact Us
+            </Button>
+            <Button component={MiButton} href="/sharing">
+              Sharing
             </Button>
           </div>
 
