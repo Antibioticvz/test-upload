@@ -12,6 +12,7 @@
     "email-validator": "^2.0.4",
     "firebase": "^7.19.1",
     "hookrouter": "^1.2.3",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.3",

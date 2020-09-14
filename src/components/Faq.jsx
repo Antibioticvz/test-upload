@@ -82,14 +82,16 @@ export const FAQ = () => {
                 }
                 variant="body1"
               >
-                What the heck is Readtronic?
+                What is Readtronic?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+                We built Readtronic to help you combat information overload. The
+                Readtronic app empowers you to listen to everything that has
+                piled up while you’re cleaning the house, walking the dog,
+                driving to work, or going for a run to help you finally feel
+                caught up.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -112,15 +114,17 @@ export const FAQ = () => {
                 }
                 variant="body1"
               >
-                Why choose Readtronic?
+                How can I add content to my Readtronic app?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">
-                Yes, you can. You can tell us how many reviews you want us to
-                post daily once you buy ios reviews, or android reviews, for
-                this, you can either email us, or add our representative on
-                skype.
+                Once you’ve installed the Readtronic app, you can add content
+                any place — Safari, Chrome, news apps — you see the . You can
+                also add files — docx, pdfs, and txt — via our website or
+                quickly add webpages with our Chrome extension. This content
+                will show up in your app on your phone ready for listening on
+                the go.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -143,14 +147,17 @@ export const FAQ = () => {
                 }
                 variant="body1"
               >
-                Can I provide my own reviews?
+                How good are these “premium” voices?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+                We love them, but you don’t take our word for it. Judge for
+                yourself. Click the samples above in the pricing section or just
+                download our iOS app, navigate to the main player screen, and
+                click the “Voices” button. You can listen to samples of all our
+                premium voices by pressing the play buttons on the right side of
+                each row.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -173,14 +180,19 @@ export const FAQ = () => {
                 }
                 variant="body1"
               >
-                How can I cancel my subscriptions?
+                Why do we have ads?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+                Ads are…sub-optimal. However, we want to continue to innovate to
+                deliver the best experience possible and, unfortunately, that
+                takes money. We will do our best to be respectful of your time
+                and try to keep these bill-paying interruptions to a minimum.
+                Alternatively, we offer two subscription options that eliminate
+                ads. We know time are tough, so we’ve pushed to keep the prices
+                as low as possible for our ad-free options, so if ads are a deal
+                breaker, check those out.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -203,14 +215,14 @@ export const FAQ = () => {
                 }
                 variant="body1"
               >
-                Why choose readtronic?
+                How can I recommend a new feature?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+                We are dedicated to constantly improving Readtonic. Please pop
+                over to our contact page and tell us what you think would help
+                Readtronic better server you and make your life better.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -233,14 +245,16 @@ export const FAQ = () => {
                 }
                 variant="body1"
               >
-                Why I can access my account multiple devices?
+                Where can I download the Readtronic app?
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography variant="body1">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-                eget.
+                Currently, we are only supporting Apple devices. You can
+                download our iOS app here. We are working on Readtronic for
+                Android. It’s just harder to get perfect with all the different
+                Android devices out there. Sign up here if you’d like to be one
+                of our beta test guinea pigs.
               </Typography>
             </AccordionDetails>
           </Accordion>

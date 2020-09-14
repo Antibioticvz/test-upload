@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import { StayInformed } from "./components/StayInformed";
 import { Advantage } from "./components/Advantage";

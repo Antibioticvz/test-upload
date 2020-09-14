@@ -1,0 +1,82 @@
+.slider {
+  height: 90vh;
+  transform-style: preserve-3d;
+  perspective: 400px;
+
+  @media only screen and (max-width: 960px) {
+    height: 45vh;
+  }
+  @media only screen and (max-width: 720px) {
+    height: 30vh;
+  }
+
+  .item {
+    width: 280px;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.7s;
+    position: absolute;
+
+    @media only screen and (max-width: 960px) {
+      width: 140px;
+      height: 300px;
+    }
+    @media only screen and (max-width: 720px) {
+      width: 90px;
+      height: 200px;
+    }
+
+    img {
+      height: 81%;
+
+      @media only screen and (max-width: 960px) {
+        height: 76%;
+      }
+      @media only screen and (max-width: 720px) {
+        height: 60%;
+      }
+    }
+  }
+
+  .item-1,
+  .item-2,
+  .item-3 {
+    top: 50%;
+    left: 50%;
+  }
+
+  .item-1,
+  .item-3 {
+    cursor: pointer;
+  }
+
+  .item-1 {
+    transform: translate(-120%, -50%);
+  }
+
+  .item-2 {
+    transform: translate(-50%, -50%) translateZ(80px);
+  }
+
+  .item-3 {
+    transform: translate(20%, -50%);
+  }
+
+  .header {
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  .header-2 {
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    opacity: 1;
+  }
+}
