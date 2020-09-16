@@ -98,6 +98,7 @@ const useStyles = makeStyles((theme) => ({
   stepSubmitContainer: {
     display: "flex",
     justifyContent: "space-between",
+    marginRight: "5%",
 
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
@@ -129,6 +130,21 @@ const useStyles = makeStyles((theme) => ({
   headerImg: {
     width: 60,
     marginLeft: "7%",
+  },
+  multiText: {
+    backgroundColor: "#f6f7fe",
+    borderRadius: 20,
+
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#fff",
+    },
+
+    "& .MuiInput-underline:before": {
+      borderBottomColor: "#fff",
+    },
+  },
+  submitButton: {
+    width: 219,
   },
 }));
 
@@ -172,8 +188,8 @@ export const Upload = () => {
   return (
     <div className={classes.root}>
       <Grid className={classes.gridContainer} container>
-        <Grid item xs={false} sm={1}></Grid>
-        <Grid item xs={12} sm={10} className={classes.wrapper}>
+        <Grid item xs={false} sm={2}></Grid>
+        <Grid item xs={12} sm={8} className={classes.wrapper}>
           <div className={classes.headerContainer}>
             <div className={classes.headerImgContainer}>
               <img className={classes.headerImg} src={File} />
@@ -181,6 +197,7 @@ export const Upload = () => {
                 File to audio
               </Typography>
             </div>
+            <br />
           </div>
 
           <div className={classes.uploadBox}>
@@ -249,6 +266,7 @@ export const Upload = () => {
                 Text to audio
               </Typography>
             </div>
+            <br />
           </div>
 
           <div className={classes.uploadBox}>
@@ -281,7 +299,7 @@ export const Upload = () => {
             </div>
           </div>
         </Grid>
-        <Grid item xs={false} sm={1}></Grid>
+        <Grid item xs={false} sm={2}></Grid>
       </Grid>
     </div>
   );
