@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Recaptcha from "react-recaptcha";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -34,15 +35,19 @@ const useStyles = makeStyles((theme) => ({
   },
   submitContainer: {
     display: "flex",
-    flexDirection: "row-reverse",
+    justifyContent: "space-between",
+    marginTop: 20,
   },
   submitButton: {
-    margin: "17px 0",
+    margin: "auto 0",
   },
 }));
 
 export const ContactUs = () => {
   const classes = useStyles();
+  const [verify, setVerify] = useState(false);
+
+  const verifyCallback = () => setVerify(true);
 
   return (
     <div className={classes.root}>
@@ -81,7 +86,13 @@ export const ContactUs = () => {
             </Grid>
 
             <div className={classes.submitContainer}>
+              <Recaptcha
+                sitekey="6LeE68wZAAAAAI6Ugiy3UTnEZnm4Vnu_n9XQa_Oz"
+                render="explicit"
+                verifyCallback={verifyCallback}
+              />
               <Button
+                disabled={!verify}
                 className={classes.submitButton}
                 variant="contained"
                 color="primary"
