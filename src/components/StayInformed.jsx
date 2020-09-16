@@ -1,14 +1,17 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
+import { QrDialog } from "./QrDialog";
 
 import Back from "../images/back.svg";
 import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
 import Gstore from "../images/Gstore.svg";
-
 import Blob from "../images/Blob.png";
 
 import "../sliderStyle.scss";
@@ -234,9 +237,14 @@ const useStyles = makeStyles((theme) => ({
 
 export const StayInformed = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const [open, setOpen] = useState(false);
 
   return (
     <div className={classes.root}>
+      <QrDialog open={open} handleClose={() => setOpen(false)} />
       <Grid container>
         <Grid item xs={12} sm={5}>
           <div className={classes.textContainer}>
@@ -252,7 +260,17 @@ export const StayInformed = () => {
             </Typography>
 
             <div className={classes.buttonsRow}>
-              <IconButton className={classes.storeButtons} aria-label="Store">
+              <IconButton
+                className={classes.storeButtons}
+                onClick={() =>
+                  matches
+                    ? setOpen(true)
+                    : window.location.replace(
+                        "https://www.apple.com/ios/app-store/"
+                      )
+                }
+                aria-label="Store"
+              >
                 <img src={Istore} alt="Istore" />
               </IconButton>
               <IconButton className={classes.storeButtons} aria-label="Store">
