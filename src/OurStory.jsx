@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
   },
   gridContainer: {},
+  textContainer: {
+    backgroundColor: "#fff",
+  },
   avatar: {
     margin: "118px auto 0px",
 
@@ -71,7 +74,7 @@ export const OurStory = () => {
   return (
     <div className={classes.root}>
       <Grid className={classes.gridContainer} container>
-        <Grid item xs={false} sm={2}></Grid>
+        <Grid item xs={false} sm={1}></Grid>
         <Grid className={classes.avatarContainer} item xs={12} sm={2}>
           <img className={classes.avatar} src={Kevin} width="100px" />
           <Typography className={classes.name} variant="body1">
@@ -81,7 +84,7 @@ export const OurStory = () => {
             August 21, 2020
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid className={classes.textContainer} item xs={12} sm={6}>
           <Typography className={classes.header} variant="h2">
             The Readtronic Story
           </Typography>
@@ -104,7 +107,7 @@ export const OurStory = () => {
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={4}></Grid>
+        <Grid item xs={12} sm={1}></Grid>
       </Grid>
     </div>
   );
