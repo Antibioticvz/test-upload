@@ -128,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#4279f1",
+    backgroundColor: "rgb(66, 121, 241, 0.1)",
     fontFamily: "Fira Sans",
     fontSize: 18,
   },
