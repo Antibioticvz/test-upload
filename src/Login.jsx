@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 import FirebaseContext from "./Firebase";
 import Context from "./ContextAuth";
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${Back})`,
-    backgroundSize: "contain",
+    backgroundSize: "cover",
     marginBottom: 230,
   },
   gridButtons: {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     padding: "0 35px",
+    hight: 988,
 
     [theme.breakpoints.up("sm")]: {
       padding: "0 185px",
@@ -41,12 +43,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 18,
   },
   sub: {
-    ontSize: 14,
+    fontSize: 14,
     margin: "22px 0 0",
     textAlign: "center",
   },
   button: {
     fontWeight: "bold",
+    backgroundColor: "rgba(96, 101, 111, 0.06)",
   },
 }));
 
@@ -185,6 +188,7 @@ const Old = () => {
       >
         Submit
       </Button>
+      <div style={{ height: "64px" }} />
     </>
   );
 };
@@ -233,18 +237,20 @@ export const Login = ({ tab }) => {
         <Grid item xs={false} sm={4}></Grid>
       </Grid>
 
-      <Grid className={classes.gridContainer} spacing={2} container>
-        <Grid item xs={12} sm={4}></Grid>
-        <Grid className={classes.gridMidContainer} item xs={12} sm={4}>
-          {screenToShow(screen)}
+      <Container maxWidth={false}>
+        <Grid className={classes.gridContainer} spacing={2} container>
+          <Grid item xs={12} sm={4}></Grid>
+          <Grid className={classes.gridMidContainer} item xs={12} sm={4}>
+            {screenToShow(screen)}
 
-          <Typography className={classes.sub} variant="body1">
-            By signing up you agree to Readtronic's Terms of Service and Privacy
-            Policy.
-          </Typography>
+            <Typography className={classes.sub} variant="body1">
+              By signing up you agree to Readtronic's Terms of Service and
+              Privacy Policy.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={4}></Grid>
         </Grid>
-        <Grid item xs={12} sm={4}></Grid>
-      </Grid>
+      </Container>
     </div>
   );
 };

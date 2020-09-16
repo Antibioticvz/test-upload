@@ -60,10 +60,6 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiInput-underline:before": {
       borderBottomColor: "#fff",
     },
-
-    "'&:hover:not($disabled):not($focused):not($error):before':": {
-      borderBottom: "2px solid rgb(0 0 0 / 0%)",
-    },
   },
   submitContainer: {
     display: "flex",
