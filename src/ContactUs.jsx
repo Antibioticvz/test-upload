@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
 import Back from "./images/back.svg";
 
@@ -19,9 +20,14 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: "6%",
       marginRight: "6%",
     },
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: "6%",
+      marginRight: "6%",
+    },
   },
   form: {
     backgroundColor: "#fff",
+    // minWidth: "565px",
   },
   header: {
     fontSize: 46,
@@ -32,6 +38,16 @@ const useStyles = makeStyles((theme) => ({
   secondHeader: {
     fontSize: 32,
     lineHeight: 2.34,
+  },
+  midleContainer: {
+    backgroundColor: "#fff",
+  },
+  leftContainer: {
+    [theme.breakpoints.up("sm")]: {
+      "& .MuiGrid-grid-sm-auto": {
+        flexGrow: 1,
+      },
+    },
   },
   multiText: {
     backgroundColor: "#f6f7fe",
@@ -53,6 +69,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     marginTop: 20,
+
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   submitButton: {
     margin: "auto 0",
@@ -67,58 +87,65 @@ export const ContactUs = () => {
 
   return (
     <div className={classes.root}>
-      <Grid className={classes.gridContainer} container>
-        <Grid item xs={12} sm={4}></Grid>
-        <Grid item xs={12} sm={4}>
-          <Typography className={classes.header} variant="h2">
-            We'd love to hear from you
-          </Typography>
-          <Typography className={classes.secondHeader} variant="h3">
-            What's on your mind?
-          </Typography>
+      <Container maxWidth={false}>
+        <Grid className={classes.gridContainer} spacing={0} container>
+          <Grid className={classes.leftContainer} item xs={12} sm={3}></Grid>
+          <Grid className={classes.midleContainer} item xs={12} sm={6}>
+            <Typography className={classes.header} variant="h2">
+              We'd love to hear from you
+            </Typography>
 
-          <form className={classes.form} noValidate autoComplete="off">
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField fullWidth label="First Name" />
+            <div
+              style={{ width: "100%", height: 0, border: "solid 1px #e4e5e4" }}
+            />
+
+            <Typography className={classes.secondHeader} variant="h3">
+              What's on your mind?
+            </Typography>
+
+            <form className={classes.form} noValidate autoComplete="off">
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField fullWidth label="First Name" />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField fullWidth label="Last Name" />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField fullWidth label="Email" />
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <TextField
+                    className={classes.multiText}
+                    fullWidth
+                    multiline
+                    rows={8}
+                    placeholder="Please enter your message here"
+                    label="How can we help? What can we do better?"
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField fullWidth label="Last Name" />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField fullWidth label="Email" />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  className={classes.multiText}
-                  fullWidth
-                  multiline
-                  rows={8}
-                  placeholder="Please enter your message here"
-                  label="How can we help? What can we do better?"
+
+              <div className={classes.submitContainer}>
+                <Recaptcha
+                  sitekey="6LeE68wZAAAAAI6Ugiy3UTnEZnm4Vnu_n9XQa_Oz"
+                  render="explicit"
+                  verifyCallback={verifyCallback}
                 />
-              </Grid>
-            </Grid>
-
-            <div className={classes.submitContainer}>
-              <Recaptcha
-                sitekey="6LeE68wZAAAAAI6Ugiy3UTnEZnm4Vnu_n9XQa_Oz"
-                render="explicit"
-                verifyCallback={verifyCallback}
-              />
-              <Button
-                disabled={!verify}
-                className={classes.submitButton}
-                variant="contained"
-                color="primary"
-              >
-                Submit
-              </Button>
-            </div>
-          </form>
+                <Button
+                  disabled={!verify}
+                  className={classes.submitButton}
+                  variant="contained"
+                  color="primary"
+                >
+                  Submit
+                </Button>
+              </div>
+            </form>
+          </Grid>
+          <Grid item xs={12} sm={3}></Grid>
         </Grid>
-        <Grid item xs={12} sm={4}></Grid>
-      </Grid>
+      </Container>
     </div>
   );
 };
