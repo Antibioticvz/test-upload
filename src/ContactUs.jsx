@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
       marginRight: "6%",
     },
   },
+  form: {
+    backgroundColor: "#fff",
+  },
   header: {
     fontSize: 46,
     marginTop: 100,
@@ -31,7 +34,20 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 2.34,
   },
   multiText: {
-    backgroundColor: "#fff",
+    backgroundColor: "#f6f7fe",
+    borderRadius: 20,
+
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#fff",
+    },
+
+    "& .MuiInput-underline:before": {
+      borderBottomColor: "#fff",
+    },
+
+    "'&:hover:not($disabled):not($focused):not($error):before':": {
+      borderBottom: "2px solid rgb(0 0 0 / 0%)",
+    },
   },
   submitContainer: {
     display: "flex",
@@ -55,13 +71,13 @@ export const ContactUs = () => {
         <Grid item xs={12} sm={4}></Grid>
         <Grid item xs={12} sm={4}>
           <Typography className={classes.header} variant="h2">
-            The Readtronic Story
+            We'd love to hear from you
           </Typography>
           <Typography className={classes.secondHeader} variant="h3">
             What's on your mind?
           </Typography>
 
-          <form className={classes.root} noValidate autoComplete="off">
+          <form className={classes.form} noValidate autoComplete="off">
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField fullWidth label="First Name" />
@@ -77,7 +93,6 @@ export const ContactUs = () => {
                   className={classes.multiText}
                   fullWidth
                   multiline
-                  variant="filled"
                   rows={8}
                   placeholder="Please enter your message here"
                   label="How can we help? What can we do better?"

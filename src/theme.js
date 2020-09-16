@@ -77,6 +77,13 @@ const theme = createMuiTheme({
         margin: "0 10px",
       },
     },
+    MuiInput: {
+      underline: {
+        "&&&&:hover:before": {
+          borderBottom: "1px solid rgba(0, 0, 0, 0)",
+        },
+      },
+    },
   },
 });
 
