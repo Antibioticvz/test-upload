@@ -179,7 +179,7 @@ const SliderComponent = () => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: 1035,
+    height: 900,
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${BG2})`,
     backgroundSize: "contain",

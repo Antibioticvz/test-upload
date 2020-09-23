@@ -45,14 +45,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Card = ({ header, icon, text }) => {
+const Card = ({ headerFirst, headerSecond, icon, text }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.card}>
       {icon}
       <Typography className={classes.cardHeader} variant="h4">
-        {header}
+        {headerFirst}
+        <br />
+        {headerSecond}
       </Typography>
       <Typography className={classes.cardText} variant="body1">
         {text}
@@ -72,19 +74,24 @@ export const Advantage = () => {
       <Typography className={classes.header} variant="h3">
         Fastest Way to Get Information off Your Screen and Into Your Head
       </Typography>
+      <br />
+      <br />
+      <br />
 
       <Grid className={classes.cardsContainer} container>
         <Grid item xs={12} sm={4}>
           <Card
             icon={<img className={classes.img} src={Take} />}
-            header="Take Your Reading Anywhere"
+            headerFirst="Take Your Reading"
+            headerSecond="Anywhere"
             text="Use Readtronic to listen when reading isn't possible: while you are cleaning the house, walking the dog, driving to work, or going for a run"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <Card
             icon={<img className={classes.img} src={Simple} />}
-            header="Simple Upload From Phone or Computer"
+            headerFirst="Simple Upload From"
+            headerSecond="Phone or Computer"
             text="Share from phone, upload via our website, 
             extract with our Chrome extension to quickly add content to our app for listening on the go"
           />
@@ -92,7 +99,8 @@ export const Advantage = () => {
         <Grid item xs={12} sm={4}>
           <Card
             icon={<img className={classes.img} src={Listen} />}
-            header="Listen to Any Text"
+            headerFirst="Listen to"
+            headerSecond="Any Text"
             text="Any document or text; we got you.
             Websites and blogs? Of course! 
             PDFs? No problem. Docs? For sure."
