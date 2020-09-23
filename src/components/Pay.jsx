@@ -98,6 +98,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#4279f1",
   },
   period: {
+    marginTop: 12,
     fontFamily: "Fira Sans",
     fontSize: 12,
     fontWeight: "normal",
@@ -115,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     display: "flex",
-    margin: "10px 20%",
+    margin: "9px 20%",
   },
   listItemIcon: {
     display: "flex",
@@ -139,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#757e75",
   },
   buttonContainer: {
-    margin: "37px auto",
+    margin: "34px auto",
     width: "50%",
   },
   buttonFree: {
@@ -165,6 +166,24 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#674af8",
     fontFamily: "Fira Sans",
     fontSize: 16,
+  },
+  iconContainerPro: {
+    display: "flex",
+    backgroundColor: "#4279f1",
+  },
+  iconContainer: {
+    display: "flex",
+    backgroundColor: "#fff",
+  },
+  iconWrapper: {
+    display: "flex",
+    flex: 1,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: "#fff",
+  },
+  img: {
+    margin: "auto",
   },
 }));
 
@@ -192,22 +211,26 @@ const Card = ({
         </Typography>
       </div>
 
-      {icon}
+      <div className={pro ? classes.iconContainerPro : classes.iconContainer}>
+        <div className={classes.iconWrapper}>{icon}</div>
+      </div>
+
       {pro && (
         <Typography className={classes.oldPrice} variant="h4">
           {oldPrice}
         </Typography>
       )}
+
       <Typography className={classes.mainPrice} variant="h4">
         {price}
       </Typography>
-      {pro && (
-        <div className={classes.flag}>
-          <div className={classes.flagShadow}>
-            <img src={Flag} />
-          </div>
+
+      <div className={classes.flag}>
+        <div className={classes.flagShadow}>
+          {pro && <img src={Flag} alt="" />}
         </div>
-      )}
+      </div>
+
       <Typography className={classes.period} variant="body1">
         {period}
       </Typography>

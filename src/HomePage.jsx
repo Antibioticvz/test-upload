@@ -1,9 +1,6 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { usePath } from "hookrouter";
 
-import Sophie from "./Sophie.wav";
-import Player from "./components/Player";
-
 import { StayInformed } from "./components/StayInformed";
 import { Advantage } from "./components/Advantage";
 import { Pay } from "./components/Pay";
@@ -24,7 +21,6 @@ export const HomePage = () => {
 
   return (
     <>
-      <Player url={Sophie} />
       <StayInformed />
       <Advantage />
       <div ref={myRef}> </div>
