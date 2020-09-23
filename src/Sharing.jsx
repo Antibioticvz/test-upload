@@ -77,28 +77,28 @@ export const Sharing = () => {
         <Typography className={classes.text} variant="body1">
           2. Click the Share icon on the bottom of your screen.
         </Typography>
-        <img className={classes.img} src={AScreen} />
+        <img className={classes.img} src={AScreen} alt="" />
         <Typography className={classes.text} variant="body1">
           3. Swipe left on app icons and then click More.
         </Typography>
-        <img className={classes.img} src={BScreen} />
+        <img className={classes.img} src={BScreen} alt="" />
         <Typography className={classes.text} variant="body1">
           4. Click Edit.
         </Typography>
-        <img className={classes.img} src={CScreen} />
+        <img className={classes.img} src={CScreen} alt="" />
         <Typography className={classes.text} variant="body1">
           5. Click the + to left of Readtronic.
         </Typography>
-        <img className={classes.img} src={DScreen} />
+        <img className={classes.img} src={DScreen} alt="" />
         <Typography className={classes.text} variant="body1">
           6. Click Done.
         </Typography>
-        <img className={classes.img} src={EScreen} />
+        <img className={classes.img} src={EScreen} alt="" />
         <Typography className={classes.text} variant="body1">
           7. Click the Readtronic icon to add the content to your Readtronic
           app.
         </Typography>
-        <img className={classes.img} src={FScreen} />
+        <img className={classes.img} src={FScreen} alt="" />
         <Typography className={classes.text} variant="body1">
           8. That's it! Repeat steps 2 & 7 to add content to your Readtronic
           app.

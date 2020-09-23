@@ -89,7 +89,7 @@ export const OurStory = () => {
             The Readtronic Story
           </Typography>
 
-          <img src={Boys} width="100%" />
+          <img src={Boys} width="100%" alt="" />
           <Typography className={classes.text} variant="body1">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.

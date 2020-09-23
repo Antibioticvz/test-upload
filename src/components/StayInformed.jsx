@@ -202,6 +202,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2%",
   },
   secondHeader: {
+    fontSize: 37,
     lineHeight: "1.2",
     marginBottom: "4%",
   },
@@ -248,7 +249,7 @@ export const StayInformed = () => {
         <Grid item xs={12} sm={5}>
           <div className={classes.textContainer}>
             <Typography className={classes.firstHeader} variant="h1">
-              Stay Informed
+              .
             </Typography>
             <Typography className={classes.secondHeader} variant="h3">
               Listen Today Instead of Reading Tomorrow
