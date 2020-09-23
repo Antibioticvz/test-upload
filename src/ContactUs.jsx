@@ -30,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
     // minWidth: "565px",
   },
   header: {
-    fontSize: 46,
+    fontSize: 37,
     marginTop: 100,
     lineHeight: 1.3,
     textAlign: "center",
   },
   secondHeader: {
-    fontSize: 32,
-    lineHeight: 2.34,
+    fontSize: 23,
+    lineHeight: 2,
   },
   midleContainer: {
     backgroundColor: "#fff",
@@ -116,8 +116,8 @@ export const ContactUs = () => {
                     fullWidth
                     multiline
                     rows={8}
-                    placeholder="Please enter your message here"
-                    label="How can we help? What can we do better?"
+                    placeholder=" Please enter your message here"
+                    label=" How can we help? What can we do better?"
                   />
                 </Grid>
               </Grid>

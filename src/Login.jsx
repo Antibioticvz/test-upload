@@ -48,8 +48,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   button: {
-    fontWeight: "bold",
     backgroundColor: "rgba(96, 101, 111, 0.06)",
+  },
+  buttonActive: {
+    fontWeight: "bold",
   },
 }));
 
@@ -216,7 +218,7 @@ export const Login = ({ tab }) => {
         <Grid item xs={false} sm={4}></Grid>
         <Grid item xs={6} sm={2}>
           <Button
-            className={screen === 0 ? classes.button : ""}
+            className={screen === 1 ? classes.button : classes.buttonActive}
             onClick={() => setScreen(0)}
             fullWidth
           >
@@ -226,7 +228,7 @@ export const Login = ({ tab }) => {
         </Grid>
         <Grid item xs={6} sm={2}>
           <Button
-            className={screen === 1 ? classes.button : ""}
+            className={screen === 0 ? classes.button : classes.buttonActive}
             onClick={() => setScreen(1)}
             fullWidth
           >

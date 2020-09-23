@@ -20,6 +20,16 @@ import Mark from "./../Mark.wav";
 const useStyles = makeStyles((theme) => ({
   root: {},
   header: {
+    fontSize: 37,
+    marginTop: 12,
+    marginLeft: 4,
+    marginRight: 4,
+    marginBottom: 20,
+    textAlign: "center",
+    lineHeight: "1",
+  },
+  subHeader: {
+    fontSize: 23,
     marginTop: 12,
     marginLeft: 4,
     marginRight: 4,
@@ -35,11 +45,13 @@ const useStyles = makeStyles((theme) => ({
     background: "#4279f1",
   },
   cardHeader: {
+    fontSize: 25,
     marginTop: 12,
     borderRadius: 20,
     marginBottom: 12,
   },
   cardHeaderPro: {
+    fontSize: 25,
     color: "#fff",
     marginLeft: 7,
     marginTop: 12,
@@ -68,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainPrice: {
     fontFamily: "Fira Sans",
-    fontSize: 40,
+    fontSize: 37,
     fontWeight: "bold",
     fontStretch: "normal",
     fontStyle: "normal",
@@ -78,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#4279f1",
   },
   flag: {
-    marginTop: "-41px",
+    marginTop: "-37px",
   },
   flagShadow: {
     boxShadow: "-2px 3px 6px 0px rgba(0, 0, 0, 0.16)",
@@ -151,6 +163,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgb(66, 121, 241, 0.1)",
     fontFamily: "Fira Sans",
     fontSize: 16,
+
+    [theme.breakpoints.down("sm")]: {
+      letterSpacing: "-1px",
+      fontSize: 15,
+    },
   },
   buttonBasic: {
     letterSpacing: "-0.72px",
@@ -158,6 +175,11 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     fontFamily: "Fira Sans",
     fontSize: 16,
+
+    [theme.breakpoints.down("sm")]: {
+      letterSpacing: "-1px",
+      fontSize: 15,
+    },
   },
   buttonPro: {
     letterSpacing: "-0.72px",
@@ -166,6 +188,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#674af8",
     fontFamily: "Fira Sans",
     fontSize: 16,
+
+    [theme.breakpoints.down("sm")]: {
+      letterSpacing: "-1px",
+      fontSize: 15,
+    },
   },
   iconContainerPro: {
     display: "flex",
@@ -283,9 +310,9 @@ export const Pay = () => {
   return (
     <>
       <Typography className={classes.header} variant="h2">
-        Choose The Best Play For You
+        Choose The Best Plan For You
       </Typography>
-      <Typography className={classes.header} variant="h3">
+      <Typography className={classes.subHeader} variant="h3">
         Level Up Your Productivity
       </Typography>
 
@@ -295,7 +322,7 @@ export const Pay = () => {
             <div className={classes.cardGrid}>
               <Card
                 header="Free"
-                icon={<img className={classes.img} src={Free} height="215px" />}
+                icon={<img className={classes.img} src={Free} height="180px" />}
                 price="Free"
                 period="/per month"
                 explanation="Our basic plan provides everyone free access to the power Readtronic"
@@ -330,7 +357,7 @@ export const Pay = () => {
               <Card
                 header="Basic Subscription"
                 icon={
-                  <img className={classes.img} src={Basic} height="215px" />
+                  <img className={classes.img} src={Basic} height="180px" />
                 }
                 price="$5.99"
                 period="/per month"
@@ -371,7 +398,7 @@ export const Pay = () => {
               <Card
                 pro
                 header="Pro Subscription"
-                icon={<img className={classes.img} src={Pro} height="215px" />}
+                icon={<img className={classes.img} src={Pro} height="180px" />}
                 price="$8.99"
                 oldPrice="$ 12.99"
                 period="/per month"

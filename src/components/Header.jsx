@@ -46,16 +46,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
   },
   buttonLabel: {
+    fontSize: 15,
     fontWeight: "bold",
     color: "#4279f1",
 
     "&:hover": {
       backgroundColor: "#fff",
     },
-
-    // "&:focus": {
-    //   boxShadow: "0 0 0 0.2rem rgba(0,123,255,.5)",
-    // },
   },
   buttonHover: {
     "&:hover": {
@@ -64,7 +61,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonsTop: {
+    height: 47,
     marginLeft: 14,
+  },
+
+  logoutButton: {
+    height: 47,
   },
 }));
 
@@ -324,6 +326,7 @@ export const Header = () => {
               </>
             ) : (
               <Button
+                className={classes.logoutButton}
                 variant="contained"
                 color="primary"
                 onClick={() => {

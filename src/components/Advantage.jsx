@@ -10,6 +10,15 @@ import Listen from "../images/listen.svg";
 const useStyles = makeStyles((theme) => ({
   root: {},
   header: {
+    fontSize: 37,
+    marginLeft: 4,
+    marginRight: 4,
+    marginBottom: 20,
+    textAlign: "center",
+    lineHeight: "1",
+  },
+  secondHeader: {
+    fontSize: 23,
     marginLeft: 4,
     marginRight: 4,
     marginBottom: 20,
@@ -31,13 +40,14 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 16,
   },
   cardText: {
+    fontSize: 15,
     textAlign: "center",
     marginTop: 12,
     padding: "0 15%",
   },
   cardHeader: {
+    fontSize: 23,
     padding: "0 15%",
-    fontSize: "25px",
     color: "#292d34",
     lineHeight: "1.2",
     letterSpacing: "-1px",
@@ -71,7 +81,7 @@ export const Advantage = () => {
       <Typography className={classes.header} variant="h2">
         The Readtronic Advantage
       </Typography>
-      <Typography className={classes.header} variant="h3">
+      <Typography className={classes.secondHeader} variant="h3">
         Fastest Way to Get Information off Your Screen and Into Your Head
       </Typography>
       <br />

@@ -31,16 +31,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   name: {
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: "normal",
     fontStretch: "normal",
     fontStyle: "normal",
-    lineHeight: 3,
+    lineHeight: 2,
     letterSpacing: "normal",
     textAlign: "center",
   },
   date: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: "normal",
     fontStretch: "normal",
     fontStyle: "normal",
@@ -55,13 +55,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   header: {
-    fontSize: 46,
+    fontSize: 37,
     margin: "24px 7px 30px 7px",
   },
   text: {
     margin: "10px 7px 15px 7px",
     fontFamily: "Fira Sans",
-    fontSize: 24,
+    fontSize: 17,
     lineHeight: 1.7,
     letterSpacing: "normal",
     color: "#60656f",
@@ -76,7 +76,7 @@ export const OurStory = () => {
       <Grid className={classes.gridContainer} container>
         <Grid item xs={false} sm={1}></Grid>
         <Grid className={classes.avatarContainer} item xs={12} sm={2}>
-          <img className={classes.avatar} src={Kevin} width="100px" />
+          <img className={classes.avatar} src={Kevin} width="80px" />
           <Typography className={classes.name} variant="body1">
             Kevin Gaffney
           </Typography>

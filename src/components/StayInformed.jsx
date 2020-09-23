@@ -222,6 +222,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   body: {
+    fontSize: 15,
     width: "77%",
   },
   boy: {

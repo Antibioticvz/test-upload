@@ -18,15 +18,22 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {},
   header: {
+    fontSize: 37,
     lineHeight: "1.27",
     letterSpacing: "normal",
     textAlign: "center",
   },
   subHeader: {
+    fontSize: 15,
     lineHeight: "1.5",
     letterSpacing: "normal",
     textAlign: "center",
     marginBottom: 74,
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 22,
+      marginBottom: 22,
+    },
   },
   accordionContainer: {
     margin: "20px 0",
@@ -39,6 +46,16 @@ const useStyles = makeStyles((theme) => ({
   accHeader: {
     fontWeight: "bold",
     color: "#292d34",
+  },
+  faqText: {
+    fontSize: 15,
+  },
+  questionImg: {
+    width: "80%",
+
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -61,7 +78,7 @@ export const FAQ = () => {
 
       <Grid className={classes.gridContainer} container>
         <Grid item xs={12} sm={6}>
-          <img src={Faq} width="98%" />
+          <img src={Faq} className={classes.questionImg} alt="" />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Accordion
@@ -86,7 +103,7 @@ export const FAQ = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">
+              <Typography className={classes.faqText} variant="body1">
                 We built Readtronic to help you combat information overload. The
                 Readtronic app empowers you to listen to everything that has
                 piled up while you’re cleaning the house, walking the dog,
@@ -118,7 +135,7 @@ export const FAQ = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">
+              <Typography className={classes.faqText} variant="body1">
                 Once you’ve installed the Readtronic app, you can add content
                 any place — Safari, Chrome, news apps — you see the . You can
                 also add files — docx, pdfs, and txt — via our website or
@@ -151,7 +168,7 @@ export const FAQ = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">
+              <Typography className={classes.faqText} variant="body1">
                 We love them, but you don’t take our word for it. Judge for
                 yourself. Click the samples above in the pricing section or just
                 download our iOS app, navigate to the main player screen, and
@@ -184,7 +201,7 @@ export const FAQ = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">
+              <Typography className={classes.faqText} variant="body1">
                 Ads are…sub-optimal. However, we want to continue to innovate to
                 deliver the best experience possible and, unfortunately, that
                 takes money. We will do our best to be respectful of your time
@@ -219,7 +236,7 @@ export const FAQ = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">
+              <Typography className={classes.faqText} variant="body1">
                 We are dedicated to constantly improving Readtonic. Please pop
                 over to our contact page and tell us what you think would help
                 Readtronic better server you and make your life better.
@@ -249,7 +266,7 @@ export const FAQ = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography variant="body1">
+              <Typography className={classes.faqText} variant="body1">
                 Currently, we are only supporting Apple devices. You can
                 download our iOS app here. We are working on Readtronic for
                 Android. It’s just harder to get perfect with all the different
