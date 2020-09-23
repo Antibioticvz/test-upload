@@ -8,7 +8,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { QrDialog } from "./QrDialog";
 
-import Back from "../images/back.svg";
 import BG2 from "../images/BG2.png";
 import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
@@ -86,7 +85,7 @@ class Slider {
 
 const useStylesComponent = makeStyles((theme) => ({
   header: {
-    fontSize: 77,
+    fontSize: 66,
 
     [theme.breakpoints.down("md")]: {
       fontSize: 60,
@@ -100,12 +99,11 @@ const useStylesComponent = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundPositionY: 85,
     backgroundImage: `url(${Blob})`,
-    // backgroundSize: "contain",
-    backgroundSize: "85%",
+    backgroundSize: "82%",
 
     [theme.breakpoints.down("md")]: {
       backgroundPositionY: 88,
-      backgroundSize: "90%",
+      backgroundSize: "88%",
     },
     [theme.breakpoints.down("sm")]: {
       backgroundPositionY: 50,
@@ -185,19 +183,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${BG2})`,
     backgroundSize: "contain",
-
     padding: 24,
     flexGrow: 1,
+
     [theme.breakpoints.down("md")]: {
-      // marginTop: 20,
       padding: "24px 16px",
     },
+
     [theme.breakpoints.down("sm")]: {
       padding: 12,
     },
   },
   textContainer: {
-    marginTop: "20%",
+    marginTop: "5%",
     marginLeft: "6%",
   },
   firstHeader: {
@@ -223,12 +221,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   body: {
-    width: "70%",
+    width: "77%",
   },
   boy: {
-    height: "40%",
-    marginTop: 24,
-    marginLeft: 16,
+    height: "34%",
+    marginTop: 18,
+    marginLeft: 0,
 
     [theme.breakpoints.down("sm")]: {
       display: "none",
@@ -283,7 +281,6 @@ export const StayInformed = () => {
           <img className={classes.boy} src={Man} alt="man" />
         </Grid>
         <Grid item xs={12} sm={7}>
-          {/* <img src={Stay} alt="Stay" width="100%" /> */}
           <SliderComponent />
         </Grid>
       </Grid>
