@@ -23,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${Back})`,
     backgroundSize: "contain",
     marginBottom: 330,
+    // boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.1)",
   },
   wrapper: {
     borderRadius: 20,
-    boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.1)",
+    boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.11)",
     backgroundColor: "#fff",
     margin: 20,
   },
@@ -110,13 +111,15 @@ const useStyles = makeStyles((theme) => ({
       margin: "auto",
     },
   },
-  headerContainer: { display: "flex", flexDirection: "column" },
+  headerContainer: {
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: 20,
+  },
   headerImgContainer: {
     display: "flex",
     width: "100%",
     justifyContent: "left",
-
-    background: "#fff",
   },
   headerText: {
     fontSize: 26,
@@ -159,7 +162,6 @@ export const Upload = () => {
       const file = acceptedFiles[0];
       console.log("formData");
       console.log(file);
-      // reader.readAsArrayBuffer(file);
 
       console.log(formData);
       formData.append("myFile", file, file.name);

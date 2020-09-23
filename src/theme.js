@@ -84,6 +84,11 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiStepper: {
+      root: {
+        background: "none",
+      },
+    },
   },
 });
 
