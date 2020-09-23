@@ -77,7 +77,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: "#4279f1",
   },
-  flag: { marginTop: "-41px" },
+  flag: {
+    marginTop: "-41px",
+  },
+  flagShadow: {
+    boxShadow: "-2px 3px 6px 0px rgba(0, 0, 0, 0.16)",
+    width: "fit-content",
+    height: 33,
+  },
   oldPrice: {
     fontFamily: "Fira Sans",
     fontWeight: 500,
@@ -196,7 +203,9 @@ const Card = ({
       </Typography>
       {pro && (
         <div className={classes.flag}>
-          <img src={Flag} />
+          <div className={classes.flagShadow}>
+            <img src={Flag} />
+          </div>
         </div>
       )}
       <Typography className={classes.period} variant="body1">
