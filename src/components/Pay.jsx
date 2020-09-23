@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 
 import Free from "../images/free.svg";
 import Basic from "../images/Basic.svg";
@@ -48,7 +49,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   cardsContainer: {
-    padding: "3%",
+    paddingTop: "3%",
+    paddingBottom: "3%",
+    paddingLeft: "8%",
+    paddingRight: "8%",
+
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: "3%",
+      paddingRight: "3%",
+    },
   },
   cardGrid: {
     borderRadius: 20,
@@ -57,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainPrice: {
     fontFamily: "Fira Sans",
-    fontSize: 50,
+    fontSize: 40,
     fontWeight: "bold",
     fontStretch: "normal",
     fontStyle: "normal",
@@ -70,18 +79,18 @@ const useStyles = makeStyles((theme) => ({
   oldPrice: {
     fontFamily: "Fira Sans",
     fontWeight: 500,
-    fontSize: 29,
+    fontSize: 23,
     textDecoration: "line-through",
     lineHeight: "1",
     marginBottom: 2,
-    marginTop: "-31px",
+    marginTop: "-25px",
     letterSpacing: "-1.16px",
     textAlign: "center",
     color: "#4279f1",
   },
   period: {
     fontFamily: "Fira Sans",
-    fontSize: "15px",
+    fontSize: 12,
     fontWeight: "normal",
     fontStretch: "normal",
     fontStyle: "normal",
@@ -91,8 +100,9 @@ const useStyles = makeStyles((theme) => ({
     color: "#757e75",
   },
   explanation: {
+    fontSize: 16,
     textAlign: "center",
-    margin: "5% 9%",
+    margin: "4% 3%",
   },
   listItem: {
     display: "flex",
@@ -107,14 +117,14 @@ const useStyles = makeStyles((theme) => ({
   },
   listText: {
     fontFamily: "Open Sans",
-    fontSize: 17,
+    fontSize: 14,
     fontWeight: "bold",
     lineHeight: "1.12",
     color: "#292d34",
   },
   listTextNo: {
     fontFamily: "Open Sans",
-    fontSize: 17,
+    fontSize: 14,
     fontWeight: "bold",
     lineHeight: "1.12",
     color: "#757e75",
@@ -130,14 +140,14 @@ const useStyles = makeStyles((theme) => ({
     color: "#4279f1",
     backgroundColor: "rgb(66, 121, 241, 0.1)",
     fontFamily: "Fira Sans",
-    fontSize: 18,
+    fontSize: 16,
   },
   buttonBasic: {
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#fff",
     fontFamily: "Fira Sans",
-    fontSize: 18,
+    fontSize: 16,
   },
   buttonPro: {
     letterSpacing: "-0.72px",
@@ -145,7 +155,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     backgroundColor: "#674af8",
     fontFamily: "Fira Sans",
-    fontSize: 18,
+    fontSize: 16,
   },
 }));
 
@@ -245,121 +255,125 @@ export const Pay = () => {
         Level Up Your Productivity
       </Typography>
 
-      <Grid className={classes.cardsContainer} container>
-        <Grid item xs={12} sm={4}>
-          <div className={classes.cardGrid}>
-            <Card
-              header="Free"
-              icon={<img className={classes.img} src={Free} height="233px" />}
-              price="Free"
-              period="/per month"
-              explanation="Our basic plan provides everyone free access to the power Readtronic"
-            >
-              <>
-                <ListItem
-                  condition="check"
-                  text="Unlimited Listening to Basic Voices"
-                />
-                <ListItem
-                  condition="check"
-                  text="Website & Chrome Ext. Upload"
-                />
-                <ListItem condition="no" text="Advertisements" />
-                <ListItem
-                  condition="no"
-                  text="Unlimited Access to World-Class HD Voices"
-                />
-                <ListItem condition="pause" text="Basic Voice Sample" />
+      <Container maxWidth={false}>
+        <Grid className={classes.cardsContainer} container>
+          <Grid item xs={12} sm={4}>
+            <div className={classes.cardGrid}>
+              <Card
+                header="Free"
+                icon={<img className={classes.img} src={Free} height="215px" />}
+                price="Free"
+                period="/per month"
+                explanation="Our basic plan provides everyone free access to the power Readtronic"
+              >
+                <>
+                  <ListItem
+                    condition="check"
+                    text="Unlimited Listening to Basic Voices"
+                  />
+                  <ListItem
+                    condition="check"
+                    text="Website & Chrome Ext. Upload"
+                  />
+                  <ListItem condition="no" text="Advertisements" />
+                  <ListItem
+                    condition="no"
+                    text="Unlimited Access to World-Class HD Voices"
+                  />
+                  <ListItem condition="pause" text="Basic Voice Sample" />
 
-                <div className={classes.buttonContainer}>
-                  <Button className={classes.buttonFree} variant="outlined">
-                    Sign Up For Free
-                  </Button>
-                </div>
-              </>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <div className={classes.cardGrid}>
-            <Card
-              header="Basic Subscription"
-              icon={<img className={classes.img} src={Basic} height="233px" />}
-              price="$5.99"
-              period="/per month"
-              explanation="Cut out the interruptions with our 
+                  <div className={classes.buttonContainer}>
+                    <Button className={classes.buttonFree} variant="outlined">
+                      Sign Up For Free
+                    </Button>
+                  </div>
+                </>
+              </Card>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <div className={classes.cardGrid}>
+              <Card
+                header="Basic Subscription"
+                icon={
+                  <img className={classes.img} src={Basic} height="215px" />
+                }
+                price="$5.99"
+                period="/per month"
+                explanation="Cut out the interruptions with our 
               light plan for an ad-free experience"
-            >
-              <>
-                <ListItem
-                  condition="check"
-                  text="Unlimited Listening to Basic Voices"
-                />
-                <ListItem
-                  condition="check"
-                  text="Website & Chrome Ext. Upload"
-                />
-                <ListItem condition="check" text="No Ads" />
-                <ListItem
-                  condition="no"
-                  text="Unlimited Access to World-Class HD Voices"
-                />
-                <ListItem condition="pause" text="Basic Voice Sample" />
+              >
+                <>
+                  <ListItem
+                    condition="check"
+                    text="Unlimited Listening to Basic Voices"
+                  />
+                  <ListItem
+                    condition="check"
+                    text="Website & Chrome Ext. Upload"
+                  />
+                  <ListItem condition="check" text="No Ads" />
+                  <ListItem
+                    condition="no"
+                    text="Unlimited Access to World-Class HD Voices"
+                  />
+                  <ListItem condition="pause" text="Basic Voice Sample" />
 
-                <div className={classes.buttonContainer}>
-                  <Button
-                    className={classes.buttonBasic}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Get 14 Days Free
-                  </Button>
-                </div>
-              </>
-            </Card>
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <div className={classes.cardGrid}>
-            <Card
-              pro
-              header="Pro Subscription"
-              icon={<img className={classes.img} src={Pro} height="233px" />}
-              price="$8.99"
-              oldPrice="$ 12.99"
-              period="/per month"
-              explanation="Enjoy the ultimate Readtronic experience complete with World-Class high def voices"
-            >
-              <>
-                <ListItem
-                  condition="check"
-                  text="Unlimited Listening to Basic Voices"
-                />
-                <ListItem
-                  condition="check"
-                  text="Website & Chrome Ext. Upload"
-                />
-                <ListItem condition="check" text="No Ads" />
-                <ListItem
-                  condition="check"
-                  text="Unlimited Access to World-Class HD Voices"
-                />
-                <ListItem condition="play" text="Pro Voice Sample" />
+                  <div className={classes.buttonContainer}>
+                    <Button
+                      className={classes.buttonBasic}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Get 14 Days Free
+                    </Button>
+                  </div>
+                </>
+              </Card>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <div className={classes.cardGrid}>
+              <Card
+                pro
+                header="Pro Subscription"
+                icon={<img className={classes.img} src={Pro} height="215px" />}
+                price="$8.99"
+                oldPrice="$ 12.99"
+                period="/per month"
+                explanation="Enjoy the ultimate Readtronic experience complete with World-Class high def voices"
+              >
+                <>
+                  <ListItem
+                    condition="check"
+                    text="Unlimited Listening to Basic Voices"
+                  />
+                  <ListItem
+                    condition="check"
+                    text="Website & Chrome Ext. Upload"
+                  />
+                  <ListItem condition="check" text="No Ads" />
+                  <ListItem
+                    condition="check"
+                    text="Unlimited Access to World-Class HD Voices"
+                  />
+                  <ListItem condition="play" text="Pro Voice Sample" />
 
-                <div className={classes.buttonContainer}>
-                  <Button
-                    className={classes.buttonPro}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Get 30 Days Free
-                  </Button>
-                </div>
-              </>
-            </Card>
-          </div>
+                  <div className={classes.buttonContainer}>
+                    <Button
+                      className={classes.buttonPro}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Get 30 Days Free
+                    </Button>
+                  </div>
+                </>
+              </Card>
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </>
   );
 };

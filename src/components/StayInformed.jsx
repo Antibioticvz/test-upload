@@ -9,6 +9,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { QrDialog } from "./QrDialog";
 
 import Back from "../images/back.svg";
+import BG2 from "../images/BG2.png";
 import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
 import Gstore from "../images/Gstore.svg";
@@ -182,7 +183,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: 1035,
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${Back})`,
+    backgroundImage: `url(${BG2})`,
     backgroundSize: "contain",
 
     padding: 24,

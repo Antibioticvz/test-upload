@@ -23,7 +23,7 @@ export const HomePage = () => {
     <>
       <StayInformed />
       <Advantage />
-      <div ref={myRef}> ></div>
+      <div ref={myRef}> </div>
       <Pay />
       <FAQ />
     </>

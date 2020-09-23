@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "contain",
     marginBottom: 330,
   },
-  //
   wrapper: {
     borderRadius: 20,
     boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.1)",
