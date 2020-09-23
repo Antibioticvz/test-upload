@@ -10,10 +10,12 @@ import Basic from "../images/Basic.svg";
 import Pro from "../images/pro.svg";
 import Check from "../images/check.svg";
 import No from "../images/no.svg";
-import Pause from "../images/pause.svg";
-import Play from "../images/play.svg";
 import Flag from "../images/flag.svg";
 import Vip from "../images/vip.svg";
+
+import Player from "./Player";
+import Sophie from "./../Sophie.wav";
+import Mark from "./../Mark.wav";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -218,10 +220,10 @@ const ListItem = ({ condition, text }) => {
         return <img src={Check} />;
       case "no":
         return <img src={No} />;
-      case "pause":
-        return <img src={Pause} />;
-      case "play":
-        return <img src={Play} />;
+      case "playBasic":
+        return <Player url={Mark} />;
+      case "playPro":
+        return <Player url={Sophie} />;
 
       default:
         break;
@@ -280,7 +282,7 @@ export const Pay = () => {
                     condition="no"
                     text="Unlimited Access to World-Class HD Voices"
                   />
-                  <ListItem condition="pause" text="Basic Voice Sample" />
+                  <ListItem condition="playBasic" text="Basic Voice Sample" />
 
                   <div className={classes.buttonContainer}>
                     <Button className={classes.buttonFree} variant="outlined">
@@ -317,7 +319,7 @@ export const Pay = () => {
                     condition="no"
                     text="Unlimited Access to World-Class HD Voices"
                   />
-                  <ListItem condition="pause" text="Basic Voice Sample" />
+                  <ListItem condition="playBasic" text="Basic Voice Sample" />
 
                   <div className={classes.buttonContainer}>
                     <Button
@@ -357,7 +359,7 @@ export const Pay = () => {
                     condition="check"
                     text="Unlimited Access to World-Class HD Voices"
                   />
-                  <ListItem condition="play" text="Pro Voice Sample" />
+                  <ListItem condition="playPro" text="Pro Voice Sample" />
 
                   <div className={classes.buttonContainer}>
                     <Button
