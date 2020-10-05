@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#f6f7fe",
     borderRadius: 20,
 
+    "& .MuiInputLabel-shrink": {
+      paddingLeft: 4,
+    },
     "& .MuiInput-underline:after": {
       borderBottomColor: "#fff",
     },
