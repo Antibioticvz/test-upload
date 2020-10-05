@@ -234,6 +234,9 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  textGap: {
+    marginTop: "14vh",
+  },
 }));
 
 export const StayInformed = () => {
@@ -249,9 +252,8 @@ export const StayInformed = () => {
       <Grid container>
         <Grid item xs={12} sm={5}>
           <div className={classes.textContainer}>
-            <Typography className={classes.firstHeader} variant="h1">
-              .
-            </Typography>
+            <div className={classes.textGap} />
+
             <Typography className={classes.secondHeader} variant="h3">
               Listen Today Instead of Reading Tomorrow
             </Typography>
