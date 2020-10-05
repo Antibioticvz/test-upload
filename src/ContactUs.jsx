@@ -15,15 +15,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${Back})`,
     backgroundSize: "contain",
     marginBottom: 150,
-
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: "6%",
-      marginRight: "6%",
-    },
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: "6%",
-      marginRight: "6%",
-    },
   },
   form: {
     backgroundColor: "#fff",
@@ -31,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   header: {
     fontSize: 37,
-    marginTop: 100,
+    marginTop: 14,
     lineHeight: 1.3,
     textAlign: "center",
   },
@@ -40,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 2,
   },
   midleContainer: {
-    borderRadius: 20,
-    boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.11)",
     backgroundColor: "#fff",
   },
   leftContainer: {
@@ -75,6 +64,15 @@ const useStyles = makeStyles((theme) => ({
   submitButton: {
     margin: "auto 0",
   },
+  shadow: {
+    borderRadius: 20,
+    boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.11)",
+  },
+  emptyContainer: {
+    paddingTop: 3,
+    margin: 29,
+    paddingBottom: 25,
+  },
 }));
 
 export const ContactUs = () => {
@@ -87,61 +85,69 @@ export const ContactUs = () => {
     <div className={classes.root}>
       <Container maxWidth={false}>
         <Grid className={classes.gridContainer} spacing={0} container>
-          <Grid className={classes.leftContainer} item xs={12} sm={3}></Grid>
+          <Grid className={classes.leftContainer} item xs={12} sm={3} />
           <Grid className={classes.midleContainer} item xs={12} sm={6}>
-            <Typography className={classes.header} variant="h2">
-              We'd love to hear from you
-            </Typography>
+            <div className={classes.shadow}>
+              <div className={classes.emptyContainer}>
+                <Typography className={classes.header} variant="h2">
+                  We'd love to hear from you
+                </Typography>
 
-            <div
-              style={{ width: "100%", height: 0, border: "solid 1px #e4e5e4" }}
-            />
-
-            <Typography className={classes.secondHeader} variant="h3">
-              What's on your mind?
-            </Typography>
-
-            <form className={classes.form} noValidate autoComplete="off">
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField fullWidth label="First Name" />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField fullWidth label="Last Name" />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField fullWidth label="Email" />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    className={classes.multiText}
-                    fullWidth
-                    multiline
-                    rows={8}
-                    placeholder=" Please enter your message here"
-                    label=" How can we help? What can we do better?"
-                  />
-                </Grid>
-              </Grid>
-
-              <div className={classes.submitContainer}>
-                <Recaptcha
-                  sitekey="6LeE68wZAAAAAI6Ugiy3UTnEZnm4Vnu_n9XQa_Oz"
-                  render="explicit"
-                  verifyCallback={verifyCallback}
+                <div
+                  style={{
+                    width: "100%",
+                    height: 0,
+                    border: "solid 1px #e4e5e4",
+                  }}
                 />
-                <Button
-                  disabled={!verify}
-                  className={classes.submitButton}
-                  variant="contained"
-                  color="primary"
-                >
-                  Submit
-                </Button>
+
+                <Typography className={classes.secondHeader} variant="h3">
+                  What's on your mind?
+                </Typography>
+
+                <form className={classes.form} noValidate autoComplete="off">
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label="First Name" />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label="Last Name" />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label="Email" />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      <TextField
+                        className={classes.multiText}
+                        fullWidth
+                        multiline
+                        rows={8}
+                        placeholder=" Please enter your message here"
+                        label=" How can we help? What can we do better?"
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <div className={classes.submitContainer}>
+                    <Recaptcha
+                      sitekey="6LeE68wZAAAAAI6Ugiy3UTnEZnm4Vnu_n9XQa_Oz"
+                      render="explicit"
+                      verifyCallback={verifyCallback}
+                    />
+                    <Button
+                      disabled={!verify}
+                      className={classes.submitButton}
+                      variant="contained"
+                      color="primary"
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </Grid>
-          <Grid item xs={12} sm={3}></Grid>
+          <Grid item xs={12} sm={3} />
         </Grid>
       </Container>
     </div>
