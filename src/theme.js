@@ -73,6 +73,9 @@ const theme = createMuiTheme({
         height: 58,
       },
       label: {
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
         fontSize: 17,
         margin: "0 10px",
       },
