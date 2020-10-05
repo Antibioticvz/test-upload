@@ -20,11 +20,10 @@ import Logo from "../images/logo.svg";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    padding: 24,
+    padding: "10px 24px",
     flexGrow: 1,
     [theme.breakpoints.down("md")]: {
-      // marginTop: 20,
-      padding: "24px 16px",
+      padding: "10px 16px",
     },
     [theme.breakpoints.down("sm")]: {
       padding: 12,
@@ -47,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
   },
   buttonLabel: {
+    marginTop: "-6px",
     fontSize: 15,
     fontWeight: "bold",
     color: "#4279f1",
@@ -56,6 +56,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonHover: {
+    marginTop: "-6px",
+
     "&:hover": {
       backgroundColor: "#fff",
       color: "#4279f1",
@@ -69,7 +71,15 @@ const useStyles = makeStyles((theme) => ({
   logoutButton: {
     height: 47,
   },
+  headerLogo: {
+    marginTop: "-11px",
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
+  },
   headerReadtronic: {
+    marginTop: "-8px",
     marginLeft: 5,
     width: 172,
     height: 42,
@@ -77,6 +87,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 28,
     fontWeight: "bold",
     color: "#292d34",
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
   },
 }));
 
@@ -242,7 +256,12 @@ export const Header = () => {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBar} color="default">
         <Toolbar>
-          <img src={Logo} alt="Logo" />
+          <img
+            src={Logo}
+            className={classes.headerLogo}
+            alt="Logo"
+            styles={{ marginTop: "-8px" }}
+          />
           <Typography className={classes.headerReadtronic}>
             Readtronic
           </Typography>
