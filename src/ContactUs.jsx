@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 2,
   },
   midleContainer: {
+    borderRadius: 20,
+    boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.11)",
     backgroundColor: "#fff",
   },
   leftContainer: {

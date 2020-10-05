@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${Back})`,
     backgroundSize: "contain",
     marginBottom: 330,
-    // boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.1)",
   },
   wrapper: {
     borderRadius: 20,

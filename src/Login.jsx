@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 
@@ -16,25 +15,28 @@ import Back from "./images/back.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: "100vh",
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${Back})`,
     backgroundSize: "cover",
     marginBottom: 230,
   },
   gridButtons: {
+    display: "flex",
     marginTop: 60,
   },
-  gridContainer: {
-    padding: "0 35px",
-    hight: 988,
-
-    [theme.breakpoints.up("sm")]: {
-      padding: "0 185px",
-    },
-  },
+  gridContainer: {},
   gridMidContainer: {
     background: "#fff",
-    marginTop: 9,
+    marginTop: 8,
+  },
+  midContainer: {
+    borderRadius: 20,
+    boxShadow: "0 20px 80px 0 rgba(117, 126, 117, 0.11)",
+    hight: 988,
+  },
+  screen: {
+    padding: "0px 40px 12px",
   },
   field: {
     marginTop: 16,
@@ -47,11 +49,23 @@ const useStyles = makeStyles((theme) => ({
     margin: "22px 0 0",
     textAlign: "center",
   },
-  button: {
+  buttonLeft: {
+    borderRadius: "20px 0 0 0",
     backgroundColor: "rgba(96, 101, 111, 0.06)",
   },
-  buttonActive: {
+  buttonActiveLeft: {
+    borderRadius: "20px 0 0 0",
     fontWeight: "bold",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+  },
+  buttonRight: {
+    borderRadius: "0 20px 0 0",
+    backgroundColor: "rgba(96, 101, 111, 0.06)",
+  },
+  buttonActiveRight: {
+    borderRadius: "0 20px 0 0",
+    fontWeight: "bold",
+    borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
   },
 }));
 
@@ -214,41 +228,48 @@ export const Login = ({ tab }) => {
 
   return (
     <div className={classes.root}>
-      <Grid className={classes.gridButtons} container>
-        <Grid item xs={false} sm={4}></Grid>
-        <Grid item xs={6} sm={2}>
-          <Button
-            className={screen === 1 ? classes.button : classes.buttonActive}
-            onClick={() => setScreen(0)}
-            fullWidth
-          >
-            Sign up
-          </Button>
-          <Divider />
-        </Grid>
-        <Grid item xs={6} sm={2}>
-          <Button
-            className={screen === 0 ? classes.button : classes.buttonActive}
-            onClick={() => setScreen(1)}
-            fullWidth
-          >
-            Login
-          </Button>
-          <Divider />
-        </Grid>
-        <Grid item xs={false} sm={4}></Grid>
-      </Grid>
-
       <Container maxWidth={false}>
         <Grid className={classes.gridContainer} spacing={2} container>
           <Grid item xs={12} sm={4}></Grid>
           <Grid className={classes.gridMidContainer} item xs={12} sm={4}>
-            {screenToShow(screen)}
+            <div className={classes.midContainer}>
+              <div>
+                <div className={classes.gridButtons}>
+                  <Button
+                    className={
+                      screen === 1
+                        ? classes.buttonLeft
+                        : classes.buttonActiveLeft
+                    }
+                    onClick={() => setScreen(0)}
+                    fullWidth
+                  >
+                    Sign up
+                  </Button>
 
-            <Typography className={classes.sub} variant="body1">
-              By signing up you agree to Readtronic's Terms of Service and
-              Privacy Policy.
-            </Typography>
+                  <Button
+                    className={
+                      screen === 0
+                        ? classes.buttonRight
+                        : classes.buttonActiveRight
+                    }
+                    onClick={() => setScreen(1)}
+                    fullWidth
+                  >
+                    Login
+                  </Button>
+                </div>
+              </div>
+
+              <div className={classes.screen}>
+                {screenToShow(screen)}
+
+                <Typography className={classes.sub} variant="body1">
+                  By signing up you agree to Readtronic's Terms of Service and
+                  Privacy Policy.
+                </Typography>
+              </div>
+            </div>
           </Grid>
           <Grid item xs={12} sm={4}></Grid>
         </Grid>

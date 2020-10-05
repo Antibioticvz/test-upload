@@ -39,7 +39,7 @@ const useQontoStepIconStyles = makeStyles({
 });
 
 const QontoConnector = withStyles({
-  rootStyles: {
+  root: {
     background: "none",
   },
   alternativeLabel: {
@@ -102,7 +102,6 @@ export const HorizontalStepper = ({ steps, activeStep }) => {
   return (
     <div className={classes.stepperRoot}>
       <Stepper
-        rootStyles
         activeStep={activeStep}
         alternativeLabel
         connector={<QontoConnector />}
