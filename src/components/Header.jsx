@@ -9,6 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 import MiButton from "./MiButton";
 
@@ -67,6 +68,15 @@ const useStyles = makeStyles((theme) => ({
 
   logoutButton: {
     height: 47,
+  },
+  headerReadtronic: {
+    marginLeft: 5,
+    width: 172,
+    height: 42,
+    fontFamily: "Fira Sans",
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#292d34",
   },
 }));
 
@@ -233,6 +243,10 @@ export const Header = () => {
       <AppBar position="static" className={classes.appBar} color="default">
         <Toolbar>
           <img src={Logo} alt="Logo" />
+          <Typography className={classes.headerReadtronic}>
+            Readtronic
+          </Typography>
+
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button
