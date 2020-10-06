@@ -156,13 +156,18 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
   },
   buttonFree: {
-    border: "none",
+    borderRadius: 5,
+    borderColor: "rgb(66, 121, 241, 0)",
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#4279f1",
-    backgroundColor: "rgb(66, 121, 241, 0.1)",
+    backgroundColor: "rgb(66, 121, 241, 0.05)",
     fontFamily: "Fira Sans",
     fontSize: 16,
+
+    "& .MuiButton-contained": {
+      boxShadow: "none",
+    },
 
     [theme.breakpoints.down("sm")]: {
       letterSpacing: "-1px",
@@ -170,11 +175,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonBasic: {
+    borderRadius: 5,
+    borderColor: "rgb(66, 121, 241, 0)",
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#fff",
+    backgroundColor: "rgb(66, 121, 241, 0.51)",
     fontFamily: "Fira Sans",
     fontSize: 16,
+
+    "& .MuiButton-contained": {
+      boxShadow: "none",
+    },
 
     [theme.breakpoints.down("sm")]: {
       letterSpacing: "-1px",
@@ -182,12 +194,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonPro: {
+    borderRadius: 5,
+    borderColor: "rgb(66, 121, 241, 0)",
     letterSpacing: "-0.72px",
     fontWeight: "bold",
     color: "#fff",
-    backgroundColor: "#674af8",
+    backgroundColor: "rgb(66, 121, 241, 1)",
     fontFamily: "Fira Sans",
     fontSize: 16,
+
+    "& .MuiButton-contained": {
+      boxShadow: "none",
+    },
 
     [theme.breakpoints.down("sm")]: {
       letterSpacing: "-1px",
