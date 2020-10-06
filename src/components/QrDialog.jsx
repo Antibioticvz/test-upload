@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     height: 66,
   },
   title: {
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 26,
     fontWeight: "bold",
     lineHeight: 2,
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#292d34",
   },
   text: {
-    fontFamily: "FiraSans",
+    fontFamily: "Fira Sans",
     fontSize: 20,
     margin: "28px 0",
     textAlign: "left",
