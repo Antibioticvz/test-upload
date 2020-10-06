@@ -31,7 +31,12 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: 2,
   },
   midleContainer: {
+    padding: "0 5%",
     backgroundColor: "#fff",
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "2px",
+    },
   },
   leftContainer: {
     [theme.breakpoints.up("sm")]: {

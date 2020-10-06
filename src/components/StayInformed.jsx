@@ -227,7 +227,7 @@ const useStyles = makeStyles((theme) => ({
   },
   boy: {
     height: "34%",
-    marginTop: 18,
+    marginTop: "6vh",
     marginLeft: 0,
 
     [theme.breakpoints.down("sm")]: {
