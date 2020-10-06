@@ -219,6 +219,7 @@ const useStyles = makeStyles((theme) => ({
   storeButtons: {
     "&:hover": {
       borderRadius: 16,
+      backgroundColor: "rgba(0, 0, 0, 0.07)",
     },
   },
   body: {

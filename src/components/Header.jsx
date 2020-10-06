@@ -67,6 +67,14 @@ const useStyles = makeStyles((theme) => ({
     height: 47,
     marginLeft: 14,
   },
+  buttonsTopLogin: {
+    height: 47,
+    marginLeft: 14,
+
+    "&:hover": {
+      backgroundColor: "rgba(66, 121, 241, 0.3)",
+    },
+  },
 
   logoutButton: {
     height: 47,
@@ -338,7 +346,7 @@ export const Header = () => {
             {!auth ? (
               <>
                 <Button
-                  className={classes.buttonsTop}
+                  className={classes.buttonsTopLogin}
                   component={MiButton}
                   href="/login/1"
                   variant="outlined"
