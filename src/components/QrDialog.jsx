@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     height: 66,
     backgroundColor: "rgb(66, 121, 241, 0.1)",
     textTransform: "none",
+
+    "& .MuiButton-label": {
+      whiteSpace: "unset",
+    },
   },
   buttonRight: {
     padding: 5,
