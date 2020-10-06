@@ -91,7 +91,7 @@ const useStylesComponent = makeStyles((theme) => ({
       fontSize: 60,
     },
     [theme.breakpoints.down("sm")]: {
-      fontSize: 30,
+      fontSize: 26,
     },
   },
   sliderBg: {
