@@ -14,6 +14,9 @@ import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
 import Gstore from "../images/Gstore.svg";
 import Blob from "../images/Blob.png";
+import LIST from "../images/LIST.svg";
+import FIND from "../images/FIND.svg";
+import ADD from "../images/ADD.svg";
 
 import "../sliderStyle.scss";
 
@@ -111,6 +114,10 @@ const useStylesComponent = makeStyles((theme) => ({
       backgroundSize: "55%",
     },
   },
+  pic: {
+    width: 377,
+    height: 747,
+  },
 }));
 
 const SliderComponent = () => {
@@ -143,10 +150,7 @@ const SliderComponent = () => {
             >
               LISTEN
             </Typography>
-            <img
-              src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Listen__3+Articles%403x.png"
-              alt="1"
-            />
+            <img className="pic" src={LIST} alt="1" />
           </div>
           <div className="item item-2">
             <Typography
@@ -155,10 +159,7 @@ const SliderComponent = () => {
             >
               FIND
             </Typography>
-            <img
-              src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Find___No+Label%403x.png"
-              alt="2"
-            />
+            <img className="pic" src={FIND} alt="2" />
           </div>
           <div className="item item-3">
             <Typography
@@ -167,10 +168,7 @@ const SliderComponent = () => {
             >
               ADD
             </Typography>
-            <img
-              src="https://readtronic-dev-static-assets.s3-us-west-2.amazonaws.com/Images/Share___no+label%403x.png"
-              alt="3"
-            />
+            <img className="pic" src={ADD} alt="3" />
           </div>
         </div>
       </div>
