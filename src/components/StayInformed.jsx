@@ -13,7 +13,7 @@ import BGMobile from "../images/BGMobile.svg";
 import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
 import Gstore from "../images/Gstore.svg";
-import Blob from "../images/Blob.png";
+import Blob from "../images/Blob.svg";
 
 import "../sliderStyle.scss";
 
@@ -102,13 +102,19 @@ const useStylesComponent = makeStyles((theme) => ({
     backgroundImage: `url(${Blob})`,
     backgroundSize: "82%",
 
+    [theme.breakpoints.up("lg")]: {
+      backgroundPositionY: 120,
+      backgroundSize: "69%",
+    },
+
     [theme.breakpoints.down("md")]: {
       backgroundPositionY: 88,
       backgroundSize: "88%",
     },
     [theme.breakpoints.down("sm")]: {
-      backgroundPositionY: 50,
-      backgroundSize: "55%",
+      backgroundPositionY: 25,
+      backgroundSize: "80%",
+      marginTop: 25,
     },
   },
 }));

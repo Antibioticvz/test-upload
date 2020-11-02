@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="797.444" height="700.357" viewBox="0 0 797.444 700.357">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.235" y1="-0.137" x2="1.261" y2="0.971" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4279f1"/>
+      <stop offset="0.414" stop-color="#5561f5"/>
+      <stop offset="1" stop-color="#7f31ff"/>
+    </linearGradient>
+  </defs>
+  <path id="Desktop_Blob" data-name="Desktop Blob" d="M899.352,303.981c-62.226,75.645,48.647,79.446-9.016,193.463S980.4,739.908,1170.894,753.666,1329.781,742.306,1506.3,624.3s12.4-483.276-98.874-451.962-54.88,28.434-223.161,65.332S961.578,228.336,899.352,303.981Z" transform="matrix(-0.985, -0.174, 0.174, -0.985, 1530.35, 1020.622)" fill="url(#linear-gradient)"/>
+</svg>
