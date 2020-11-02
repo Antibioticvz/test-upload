@@ -204,15 +204,22 @@ const useStyles = makeStyles((theme) => ({
   },
   textContainer: {
     marginTop: "5%",
-    marginLeft: "6%",
+
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: "6%",
+    },
   },
   firstHeader: {
     marginBottom: "2%",
   },
   secondHeader: {
-    fontSize: 37,
+    fontSize: 35,
     lineHeight: "1.2",
     marginBottom: "4%",
+
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
   },
   buttonsRow: {
     display: "flex",
@@ -232,7 +239,15 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     fontSize: 15,
-    width: "77%",
+
+    [theme.breakpoints.up("sm")]: {
+      width: "77%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      margin: "auto",
+      textAlign: "center",
+      width: "85%",
+    },
   },
   boy: {
     height: "34%",
