@@ -92,6 +92,10 @@ const useStyles = makeStyles((theme) => ({
   flag: {
     marginTop: "-37px",
   },
+  flagShadow: {
+    width: "fit-content",
+    height: 33,
+  },
   oldPrice: {
     fontFamily: "Fira Sans",
     fontWeight: 500,
@@ -265,7 +269,11 @@ const Card = ({
         {price}
       </Typography>
 
-      <div className={classes.flag}>{pro && <img src={Flag} alt="" />}</div>
+      <div className={classes.flag}>
+        <div className={classes.flagShadow}>
+          {pro && <img src={Flag} alt="" />}
+        </div>
+      </div>
 
       <Typography className={classes.period} variant="body1">
         {period}
