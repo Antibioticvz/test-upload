@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 20,
     paddingLeft: 20,
     marginBottom: "20%",
+
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: 0,
+    },
   },
   card: {
     marginLeft: 7,
