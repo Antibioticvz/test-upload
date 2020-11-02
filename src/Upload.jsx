@@ -9,7 +9,8 @@ import Typography from "@material-ui/core/Typography";
 
 import { HorizontalStepper } from "./components/HorizontalStepper";
 
-import Back from "./images/back.svg";
+import BGMain from "./images/BGMain.svg";
+import BGMobile from "./images/BGMobile.svg";
 import Miscellaneous from "./images/miscellaneous.svg";
 import MiscellaneousGray from "./images/miscellaneousGray.svg";
 import MiscellaneousWhite from "./images/miscellaneousWhite.svg";
@@ -19,10 +20,14 @@ import File from "./images/file.svg";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 1035,
+    backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${Back})`,
-    backgroundSize: "contain",
+    backgroundSize: "100%",
     marginBottom: 330,
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url(${BGMobile})`,
+    },
   },
   wrapper: {
     borderRadius: 20,

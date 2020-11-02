@@ -8,7 +8,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { QrDialog } from "./QrDialog";
 
-import BG2 from "../images/BG2.png";
+import BGMain from "../images/BGMain.svg";
+import BGMobile from "../images/BGMobile.svg";
 import Man from "../images/Man.svg";
 import Istore from "../images/Istore.svg";
 import Gstore from "../images/Gstore.svg";
@@ -180,9 +181,9 @@ const SliderComponent = () => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 900,
+    backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${BG2})`,
-    backgroundSize: "contain",
+    backgroundSize: "100%",
     padding: 24,
     flexGrow: 1,
 
@@ -192,6 +193,7 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("sm")]: {
       padding: 12,
+      backgroundImage: `url(${BGMobile})`,
     },
   },
   textContainer: {

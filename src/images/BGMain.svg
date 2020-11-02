@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="983" viewBox="0 0 1920 983">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_966" data-name="Rectangle 966" width="1920" height="983" transform="translate(0 97)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.623" y1="-1.116" x2="0.333" y2="2.043" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4279f1"/>
+      <stop offset="0.414" stop-color="#5561f5"/>
+      <stop offset="1" stop-color="#7f31ff"/>
+    </linearGradient>
+  </defs>
+  <g id="Home_Background" data-name="Home Background" transform="translate(0 -97)">
+    <circle id="Ellipse_52" data-name="Ellipse 52" cx="7.5" cy="7.5" r="7.5" transform="translate(1712 653)" fill="#fff065"/>
+    <g id="Home_Background-2" data-name="Home Background" clip-path="url(#clip-path)">
+      <g id="Group_3496" data-name="Group 3496">
+        <circle id="Ellipse_18" data-name="Ellipse 18" cx="101" cy="101" r="101" transform="translate(1819 146)" fill="#ffc148" opacity="0.88"/>
+        <circle id="Ellipse_67" data-name="Ellipse 67" cx="101" cy="101" r="101" transform="translate(-134 767)" fill="#4279f1" opacity="0.5"/>
+        <circle id="Ellipse_19" data-name="Ellipse 19" cx="34.5" cy="34.5" r="34.5" transform="translate(850 245)" fill="#4279f1" opacity="0.41"/>
+        <circle id="Ellipse_20" data-name="Ellipse 20" cx="34.5" cy="34.5" r="34.5" transform="translate(1698 895)" fill="url(#linear-gradient)"/>
+        <circle id="Ellipse_69" data-name="Ellipse 69" cx="17.5" cy="17.5" r="17.5" transform="translate(20 246)" fill="#ffc85e"/>
+        <circle id="Ellipse_21" data-name="Ellipse 21" cx="11.5" cy="11.5" r="11.5" transform="translate(1176 907)" fill="#9de7fc"/>
+      </g>
+    </g>
+  </g>
+</svg>

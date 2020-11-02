@@ -11,14 +11,19 @@ import Container from "@material-ui/core/Container";
 import FirebaseContext from "./Firebase";
 import Context from "./ContextAuth";
 
-import Back from "./images/back.svg";
+import BGMain from "./images/BGMain.svg";
+import BGMobile from "./images/BGMobile.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
+    backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${Back})`,
-    backgroundSize: "cover",
+    backgroundSize: "100%",
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url(${BGMobile})`,
+    },
     marginBottom: 230,
   },
   gridButtons: {

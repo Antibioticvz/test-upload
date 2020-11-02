@@ -7,14 +7,19 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 
-import Back from "./images/back.svg";
+import BGMain from "./images/BGMain.svg";
+import BGMobile from "./images/BGMobile.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${Back})`,
-    backgroundSize: "contain",
-    marginBottom: 150,
+    backgroundSize: "100%",
+    paddingBottom: 150,
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url(${BGMobile})`,
+    },
   },
   form: {
     backgroundColor: "#fff",

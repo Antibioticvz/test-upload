@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Kevin from "./images/Kevin.png";
 import Boys from "./images/boys.jpg";
 
-import Back from "./images/back.svg";
+import BGMain from "./images/BGMain.svg";
+import BGMobile from "./images/BGMobile.svg";
 
 const useStyles = makeStyles((theme) => ({
   avatarContainer: {
@@ -15,9 +16,13 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     paddingBottom: 122,
+    backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
-    backgroundImage: `url(${Back})`,
-    backgroundSize: "contain",
+    backgroundSize: "100%",
+
+    [theme.breakpoints.down("sm")]: {
+      backgroundImage: `url(${BGMobile})`,
+    },
   },
   gridContainer: {},
   textContainer: {
