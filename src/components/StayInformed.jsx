@@ -244,7 +244,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textGap: {
-    marginTop: "14vh",
+    [theme.breakpoints.up("sm")]: {
+      marginTop: "14vh",
+    },
   },
 }));
 
