@@ -195,11 +195,13 @@ const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.down("md")]: {
       padding: "24px 16px",
+      height: 800,
     },
 
     [theme.breakpoints.down("sm")]: {
       padding: 12,
       backgroundImage: `url(${BGMobile})`,
+      height: 700,
     },
   },
   textContainer: {
