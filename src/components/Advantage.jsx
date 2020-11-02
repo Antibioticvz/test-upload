@@ -91,7 +91,7 @@ export const Advantage = () => {
       <Grid className={classes.cardsContainer} container>
         <Grid item xs={12} sm={4}>
           <Card
-            icon={<img className={classes.img} src={Take} />}
+            icon={<img className={classes.img} src={Take} alt="" />}
             headerFirst="Take Your Reading"
             headerSecond="Anywhere"
             text="Use Readtronic to listen when reading isn't possible: while you are cleaning the house, walking the dog, driving to work, or going for a run"
@@ -99,7 +99,7 @@ export const Advantage = () => {
         </Grid>
         <Grid item xs={12} sm={4}>
           <Card
-            icon={<img className={classes.img} src={Simple} />}
+            icon={<img className={classes.img} src={Simple} alt="" />}
             headerFirst="Simple Upload From"
             headerSecond="Phone or Computer"
             text="Share from phone, upload via our website, 
@@ -108,7 +108,7 @@ export const Advantage = () => {
         </Grid>
         <Grid item xs={12} sm={4}>
           <Card
-            icon={<img className={classes.img} src={Listen} />}
+            icon={<img className={classes.img} src={Listen} alt="" />}
             headerFirst="Listen to"
             headerSecond="Any Text"
             text="Any document or text; we got you.
