@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     marginBottom: 7,
-    backgroundColor: "#f8fffa",
 
     [theme.breakpoints.down("xs")]: {
       margin: "0 32px",
