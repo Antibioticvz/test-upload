@@ -15,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "6%",
     marginBottom: 150,
     marginTop: 160,
+
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: 60,
+    },
   },
   gridContainer: {},
   header: {
