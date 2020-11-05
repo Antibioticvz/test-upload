@@ -172,6 +172,10 @@ const useStyles = makeStyles((theme) => ({
       letterSpacing: "-1px",
       fontSize: 15,
     },
+
+    "&:hover": {
+      backgroundColor: "rgba(66, 121, 241, 0.3)",
+    },
   },
   buttonBasic: {
     borderRadius: 5,
