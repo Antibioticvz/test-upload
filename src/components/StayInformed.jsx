@@ -291,6 +291,35 @@ export const StayInformed = () => {
               people to listen and learn on the go.
             </Typography>
 
+            <Hidden xsDown>
+              <div className={classes.buttonsRow}>
+                <IconButton
+                  className={classes.storeButtons}
+                  onClick={() =>
+                    matches
+                      ? setOpen(true)
+                      : window.location.replace(
+                          "https://www.apple.com/ios/app-store/"
+                        )
+                  }
+                  aria-label="Store"
+                >
+                  <img src={Istore} alt="Istore" />
+                </IconButton>
+
+                <IconButton className={classes.storeButtons} aria-label="Store">
+                  <img src={Gstore} alt="Istore" />
+                </IconButton>
+              </div>
+            </Hidden>
+          </div>
+
+          <img className={classes.boy} src={Man} alt="man" />
+        </Grid>
+        <Grid item xs={12} sm={7}>
+          <SliderComponent />
+
+          <Hidden smUp>
             <div className={classes.buttonsRow}>
               <IconButton
                 className={classes.storeButtons}
@@ -305,18 +334,8 @@ export const StayInformed = () => {
               >
                 <img src={Istore} alt="Istore" />
               </IconButton>
-              <Hidden xsDown>
-                <IconButton className={classes.storeButtons} aria-label="Store">
-                  <img src={Gstore} alt="Istore" />
-                </IconButton>
-              </Hidden>
             </div>
-          </div>
-
-          <img className={classes.boy} src={Man} alt="man" />
-        </Grid>
-        <Grid item xs={12} sm={7}>
-          <SliderComponent />
+          </Hidden>
         </Grid>
       </Grid>
     </div>
