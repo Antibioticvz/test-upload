@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
+import Hidden from "@material-ui/core/Hidden";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -304,9 +305,11 @@ export const StayInformed = () => {
               >
                 <img src={Istore} alt="Istore" />
               </IconButton>
-              <IconButton className={classes.storeButtons} aria-label="Store">
-                <img src={Gstore} alt="Istore" />
-              </IconButton>
+              <Hidden xsDown>
+                <IconButton className={classes.storeButtons} aria-label="Store">
+                  <img src={Gstore} alt="Istore" />
+                </IconButton>
+              </Hidden>
             </div>
           </div>
 
