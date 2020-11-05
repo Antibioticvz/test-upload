@@ -30,10 +30,21 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 14,
     lineHeight: 1.3,
     textAlign: "center",
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 22,
+      textAlign: "center",
+      marginBottom: 18,
+    },
   },
   secondHeader: {
     fontSize: 23,
     lineHeight: 2,
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 18,
+      marginTop: 10,
+    },
   },
   midleContainer: {
     padding: "0 5%",
