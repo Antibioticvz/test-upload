@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
-import { useTheme } from "@material-ui/core/styles";
 
 import { StayInformed } from "./components/StayInformed";
 import { Advantage } from "./components/Advantage";
@@ -45,7 +44,6 @@ export const HomePage = () => {
   const path = usePath();
   const myRef = useRef(null);
   const classes = useStyles();
-  const theme = useTheme();
 
   useLayoutEffect(() => {
     if (path === "/home/price") {

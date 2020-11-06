@@ -5,11 +5,12 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
+import Close from "@material-ui/icons/Close";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import Dialog from "@material-ui/core/Dialog";
 
 import MiButton from "./MiButton";
 
@@ -17,6 +18,7 @@ import FirebaseContext from "../Firebase";
 import Context from "../ContextAuth";
 
 import Logo from "../images/logo.svg";
+import BGMobile from "../images/BGMobile.svg";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -43,25 +45,58 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     boxShadow: "none",
-    backgroundColor: "#fff",
+    backgroundColor: "transparent",
   },
   buttonLabel: {
+
     marginTop: "-6px",
-    fontSize: 15,
+    
     fontWeight: "bold",
     color: "#4279f1",
 
     "&:hover": {
       backgroundColor: "#fff",
     },
+
+
   },
   buttonHover: {
+
     marginTop: "-6px",
 
     "&:hover": {
       backgroundColor: "#fff",
       color: "#4279f1",
     },
+
+  },
+  mobileButtonLabel: {
+    fontFamily: "Fira Sans",
+    marginTop: "-6px",
+    
+    fontWeight: "bold",
+    color: "#4279f1",
+
+    "&:hover": {
+      backgroundColor: "#fff",
+    },
+
+    "& .MuiButton-label":{
+      fontSize: 28,
+    }
+  },
+  mobileButtonHover: {
+    fontFamily: "Fira Sans",
+    marginTop: "-6px",
+
+    "&:hover": {
+      backgroundColor: "#fff",
+      color: "#4279f1",
+    },
+
+    "& .MuiButton-label":{
+      fontSize: 28,
+    }
   },
   buttonsTop: {
     height: 47,
@@ -100,6 +135,23 @@ const useStyles = makeStyles((theme) => ({
       marginTop: 0,
     },
   },
+
+  dialog: {
+    // backgroundColor: `black`,
+    
+
+    width: "100%",
+    margin: 0,
+
+    "& .MuiDialog-paperFullScreen": {
+      justifyContent: "space-between",
+    },
+    "& .MuiDialog-paper": {
+      backgroundImage: `url(${BGMobile})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100%",
+    },
+  },
 }));
 
 export const Header = () => {
@@ -108,294 +160,309 @@ export const Header = () => {
   const firebase = useContext(FirebaseContext);
   const { auth, setAuth } = useContext(Context);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
+  const handleMobileMenuOpen = () => {
+    setIsMobileMenuOpen(true)
   };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <Button
-          disableRipple
-          className={
-            path === "/home" ? classes.buttonLabel : classes.buttonHover
-          }
-          component={MiButton}
-          href="/home"
-        >
-          home
-        </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button
-          disableRipple
-          className={
-            path === "/home/price" ? classes.buttonLabel : classes.buttonHover
-          }
-          component={MiButton}
-          href="/home/price"
-        >
-          pricing
-        </Button>
-      </MenuItem>
-      {auth && (
-        <MenuItem>
-          <Button
-            disableRipple
-            className={
-              path === "/upload" ? classes.buttonLabel : classes.buttonHover
-            }
-            component={MiButton}
-            href="/upload"
-          >
-            upload
-          </Button>
-        </MenuItem>
-      )}
-      <MenuItem>
-        <Button
-          disableRipple
-          className={
-            path === "/ourstory" ? classes.buttonLabel : classes.buttonHover
-          }
-          component={MiButton}
-          href="/ourstory"
-        >
-          our Story
-        </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button
-          disableRipple
-          className={
-            path === "/contactus" ? classes.buttonLabel : classes.buttonHover
-          }
-          component={MiButton}
-          href="/contactus"
-        >
-          contact Us
-        </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button
-          disableRipple
-          className={
-            path === "/sharing" ? classes.buttonLabel : classes.buttonHover
-          }
-          component={MiButton}
-          href="/sharing"
-        >
-          Sharing
-        </Button>
-      </MenuItem>
-
-      <MenuItem>
-        <Divider />
-      </MenuItem>
-
-      <MenuItem>
-        <Button
-          className={classes.buttonsTop}
-          fullWidth
-          component={MiButton}
-          href="/login/1"
-          variant="outlined"
-          color="primary"
-        >
-          login
-        </Button>
-      </MenuItem>
-      <MenuItem>
-        <Button
-          className={classes.buttonsTop}
-          fullWidth
-          component={MiButton}
-          href="/login/0"
-          variant="contained"
-          color="primary"
-        >
-          sign Up Free
-        </Button>
-      </MenuItem>
-    </Menu>
-  );
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static" className={classes.appBar} color="default">
-        <Toolbar>
-          <img
-            src={Logo}
-            className={classes.headerLogo}
-            alt="Logo"
-            styles={{ marginTop: "-8px" }}
-          />
-          <Typography className={classes.headerReadtronic}>
-            Readtronic
-          </Typography>
+    <>
+      <Dialog
+        className={classes.dialog}
+        open={isMobileMenuOpen}
+        fullScreen
+      >
+        <div className={classes.grow}>
+        <AppBar position="static" className={classes.appBar} color="default">
+          <Toolbar>
+        <img
+              src={Logo}
+              className={classes.headerLogo}
+              alt="Logo"
+              styles={{ marginTop: "-8px" }}
+            />
+            <Typography className={classes.headerReadtronic}>
+              Readtronic
+            </Typography>
 
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+            <div className={classes.grow} />
+
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-haspopup="true"
+                onClick={()=>setIsMobileMenuOpen(false)}
+                color="inherit"
+              >
+                <Close />
+              </IconButton>
+            </div>
+        </Toolbar>
+        </AppBar>
+        </div>
+
+        <div>
+        <MenuItem>
             <Button
               disableRipple
               className={
-                path === "/home" ? classes.buttonLabel : classes.buttonHover
+                path === "/login/1" ? classes.mobileButtonLabel : classes.mobileButtonHover
+              }
+              component={MiButton}
+              href="/login/1"
+              onClick={()=>setIsMobileMenuOpen(false)}
+            >
+              login
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button
+              disableRipple
+              className={
+                path === "/login/0" ? classes.mobileButtonLabel : classes.mobileButtonHover
+              }
+              component={MiButton}
+              href="/login/0"
+              onClick={()=>setIsMobileMenuOpen(false)}
+            >
+              sign Up Free
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button
+              disableRipple
+              className={
+                path === "/home" ? classes.mobileButtonLabel : classes.mobileButtonHover
               }
               component={MiButton}
               href="/home"
+              onClick={()=>setIsMobileMenuOpen(false)}
             >
               home
             </Button>
+          </MenuItem>
+          <MenuItem>
             <Button
               disableRipple
               className={
                 path === "/home/price"
-                  ? classes.buttonLabel
-                  : classes.buttonHover
+                  ? classes.mobileButtonLabel
+                  : classes.mobileButtonHover
               }
               component={MiButton}
               href="/home/price"
+              onClick={()=>setIsMobileMenuOpen(false)}
             >
               pricing
             </Button>
-            {auth && (
+          </MenuItem>
+          {auth && (
+            <MenuItem>
               <Button
                 disableRipple
                 className={
-                  path === "/upload" ? classes.buttonLabel : classes.buttonHover
+                  path === "/upload" ? classes.mobileButtonLabel : classes.mobileButtonHover
                 }
                 component={MiButton}
                 href="/upload"
+                onClick={()=>setIsMobileMenuOpen(false)}
               >
                 upload
               </Button>
-            )}
+            </MenuItem>
+          )}
+          <MenuItem>
             <Button
               disableRipple
               className={
-                path === "/ourstory" ? classes.buttonLabel : classes.buttonHover
+                path === "/ourstory" ? classes.mobileButtonLabel : classes.mobileButtonHover
               }
               component={MiButton}
               href="/ourstory"
+              onClick={()=>setIsMobileMenuOpen(false)}
             >
               our Story
             </Button>
+          </MenuItem>
+          <MenuItem>
             <Button
               disableRipple
               className={
                 path === "/contactus"
-                  ? classes.buttonLabel
-                  : classes.buttonHover
+                  ? classes.mobileButtonLabel
+                  : classes.mobileButtonHover
               }
               component={MiButton}
               href="/contactus"
+              onClick={()=>setIsMobileMenuOpen(false)}
             >
               contact Us
             </Button>
+          </MenuItem>
+          <MenuItem>
             <Button
               disableRipple
               className={
-                path === "/sharing" ? classes.buttonLabel : classes.buttonHover
+                path === "/sharing" ? classes.mobileButtonLabel : classes.mobileButtonHover
               }
               component={MiButton}
               href="/sharing"
+              onClick={()=>setIsMobileMenuOpen(false)}
             >
               Sharing
             </Button>
+          </MenuItem>
 
-            {!auth ? (
-              <>
+          <MenuItem>
+            <Divider />
+          </MenuItem>
+
+          
+        </div>
+      </Dialog>
+
+      <div className={classes.grow}>
+        <AppBar position="static" className={classes.appBar} color="default">
+          <Toolbar>
+            <img
+              src={Logo}
+              className={classes.headerLogo}
+              alt="Logo"
+              styles={{ marginTop: "-8px" }}
+            />
+            <Typography className={classes.headerReadtronic}>
+              Readtronic
+            </Typography>
+
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <Button
+                disableRipple
+                className={
+                  path === "/home" ? classes.buttonLabel : classes.buttonHover
+                }
+                component={MiButton}
+                href="/home"
+              >
+                home
+              </Button>
+              <Button
+                disableRipple
+                className={
+                  path === "/home/price"
+                    ? classes.buttonLabel
+                    : classes.buttonHover
+                }
+                component={MiButton}
+                href="/home/price"
+              >
+                pricing
+              </Button>
+              {auth && (
                 <Button
-                  className={classes.buttonsTopLogin}
+                  disableRipple
+                  className={
+                    path === "/upload"
+                      ? classes.buttonLabel
+                      : classes.buttonHover
+                  }
                   component={MiButton}
-                  href="/login/1"
-                  variant="outlined"
-                  color="primary"
+                  href="/upload"
                 >
-                  login
+                  upload
                 </Button>
+              )}
+              <Button
+                disableRipple
+                className={
+                  path === "/ourstory"
+                    ? classes.buttonLabel
+                    : classes.buttonHover
+                }
+                component={MiButton}
+                href="/ourstory"
+              >
+                our Story
+              </Button>
+              <Button
+                disableRipple
+                className={
+                  path === "/contactus"
+                    ? classes.buttonLabel
+                    : classes.buttonHover
+                }
+                component={MiButton}
+                href="/contactus"
+              >
+                contact Us
+              </Button>
+              <Button
+                disableRipple
+                className={
+                  path === "/sharing"
+                    ? classes.buttonLabel
+                    : classes.buttonHover
+                }
+                component={MiButton}
+                href="/sharing"
+              >
+                Sharing
+              </Button>
 
+              {!auth ? (
+                <>
+                  <Button
+                    className={classes.buttonsTopLogin}
+                    component={MiButton}
+                    href="/login/1"
+                    variant="outlined"
+                    color="primary"
+                  >
+                    login
+                  </Button>
+
+                  <Button
+                    className={classes.buttonsTop}
+                    component={MiButton}
+                    href="/login/0"
+                    variant="contained"
+                    color="primary"
+                  >
+                    sign Up Free
+                  </Button>
+                </>
+              ) : (
                 <Button
-                  className={classes.buttonsTop}
-                  component={MiButton}
-                  href="/login/0"
+                  className={classes.logoutButton}
                   variant="contained"
                   color="primary"
+                  onClick={() => {
+                    setAuth(!auth);
+                    firebase.doSignOut();
+                    navigate("/");
+                    localStorage.removeItem(
+                      process.env.REACT_APP_LOCAL_STORAGE
+                    );
+                  }}
                 >
-                  sign Up Free
+                  logout
                 </Button>
-              </>
-            ) : (
-              <Button
-                className={classes.logoutButton}
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  setAuth(!auth);
-                  firebase.doSignOut();
-                  navigate("/");
-                  localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
-                }}
+              )}
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
               >
-                logout
-              </Button>
-            )}
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+                <MenuIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
+    </>
   );
 };
