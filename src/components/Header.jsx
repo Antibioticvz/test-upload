@@ -137,9 +137,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   dialog: {
-    // backgroundColor: `black`,
-    
-
     width: "100%",
     margin: 0,
 
@@ -148,8 +145,8 @@ const useStyles = makeStyles((theme) => ({
     },
     "& .MuiDialog-paper": {
       backgroundImage: `url(${BGMobile})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100%",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "100%",
     },
   },
 }));
@@ -183,7 +180,7 @@ export const Header = () => {
               styles={{ marginTop: "-8px" }}
             />
             <Typography className={classes.headerReadtronic}>
-              Readtronic
+              ReadtronicL
             </Typography>
 
             <div className={classes.grow} />

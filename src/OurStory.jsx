@@ -138,6 +138,7 @@ export const OurStory = () => {
                 className={classes.mobileAvatar}
                 src={Kevin}
                 width="80px"
+                height="80px"
                 alt=""
               />
               <div className={classes.mobileNameContainer}>

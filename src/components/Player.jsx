@@ -29,7 +29,7 @@ const Player = ({ url }) => {
   return (
     <div>
       <div onClick={toggle}>
-        {playing ? <img src={Pause} /> : <img src={Play} />}
+        {playing ? <img src={Pause} alt=''/> : <img src={Play} alt=''/>}
       </div>
     </div>
   );

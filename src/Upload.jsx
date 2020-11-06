@@ -197,7 +197,7 @@ export const Upload = () => {
         <Grid item xs={12} sm={8} className={classes.wrapper}>
           <div className={classes.headerContainer}>
             <div className={classes.headerImgContainer}>
-              <img className={classes.headerImg} src={File} />
+              <img className={classes.headerImg} src={File} alt=''/>
               <Typography className={classes.headerText} variant="body1">
                 File to audio
               </Typography>
@@ -266,7 +266,7 @@ export const Upload = () => {
 
           <div className={classes.headerContainer}>
             <div className={classes.headerImgContainer}>
-              <img className={classes.headerImg} src={Text} />
+              <img className={classes.headerImg} src={Text} alt=''/>
               <Typography className={classes.headerText} variant="body1">
                 Text to audio
               </Typography>

@@ -250,7 +250,7 @@ const Card = ({
   return (
     <div className={classes.cardsBody}>
       <div className={pro && classes.proCardHeader}>
-        {pro && <img src={Vip} />}
+        {pro && <img src={Vip} alt=''/>}
         <Typography
           className={pro ? classes.cardHeaderPro : classes.cardHeader}
           variant="h4"
@@ -297,9 +297,9 @@ const ListItem = ({ condition, text }) => {
   const icon = () => {
     switch (condition) {
       case "check":
-        return <img src={Check} />;
+        return <img src={Check} alt=''/>;
       case "no":
-        return <img src={No} />;
+        return <img src={No} alt=''/>;
       case "playBasic":
         return <Player url={Mark} />;
       case "playPro":
@@ -343,7 +343,7 @@ export const Pay = () => {
             <div className={classes.cardGrid}>
               <Card
                 header="Free"
-                icon={<img className={classes.img} src={Free} height="180px" />}
+                icon={<img className={classes.img} src={Free} height="180px" alt=''/>}
                 price="Free"
                 period="/per month"
                 explanation="Our basic plan provides everyone free access to the power Readtronic"
@@ -378,7 +378,7 @@ export const Pay = () => {
               <Card
                 header="Basic Subscription"
                 icon={
-                  <img className={classes.img} src={Basic} height="180px" />
+                  <img className={classes.img} src={Basic} height="180px" alt=''/>
                 }
                 price="$5.99"
                 period="/per month"
@@ -419,7 +419,7 @@ export const Pay = () => {
               <Card
                 pro
                 header="Pro Subscription"
-                icon={<img className={classes.img} src={Pro} height="180px" />}
+                icon={<img className={classes.img} src={Pro} height="180px" alt=''/>}
                 price="$8.99"
                 oldPrice="$ 12.99"
                 period="/per month"

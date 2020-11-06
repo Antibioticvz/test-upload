@@ -97,6 +97,7 @@ const useStylesComponent = makeStyles((theme) => ({
     },
   },
   sliderBg: {
+    zIndex: '-1',
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundPositionY: 85,
@@ -140,12 +141,12 @@ const SliderComponent = () => {
       <div
         id="slider"
         ref={elemRef}
-        className={"slider" + " " + classes.sliderBg}
+        className={`slider ${classes.sliderBg}`}
       >
         <div className={classes.sliderBg}>
           <div className="item item-1">
             <Typography
-              className={"header header-1" + " " + classes.header}
+              className={`header header-1 ${classes.header}`}
               variant="h1"
             >
               LISTEN
@@ -157,7 +158,7 @@ const SliderComponent = () => {
           </div>
           <div className="item item-2">
             <Typography
-              className={"header header-2" + " " + classes.header}
+              className={`header header-2 ${classes.header}`}
               variant="h1"
             >
               FIND
@@ -168,8 +169,9 @@ const SliderComponent = () => {
             />
           </div>
           <div className="item item-3">
+
             <Typography
-              className={"header header-3" + " " + classes.header}
+              className={`header header-3 ${classes.header}`}
               variant="h1"
             >
               ADD
