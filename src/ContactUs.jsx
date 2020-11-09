@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   multiText: {
-    backgroundColor: "#f6f7fe",
+    // backgroundColor: "#f6f7fe",
     borderRadius: 20,
 
     "& .MuiInputLabel-shrink": {
