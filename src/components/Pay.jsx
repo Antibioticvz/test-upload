@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
     textAlign: "center",
     lineHeight: "1",
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 28,
+    },
   },
   subHeader: {
     fontSize: 23,
@@ -36,6 +40,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
     textAlign: "center",
     lineHeight: "1",
+    
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 22,
+    },
   },
   proCardHeader: {
     display: "flex",
@@ -331,7 +339,7 @@ export const Pay = () => {
   return (
     <>
       <Typography className={classes.header} variant="h2">
-        Choose The Best Plan For You
+      Choose Your Plan 
       </Typography>
       <Typography className={classes.subHeader} variant="h3">
         Level Up Your Productivity
