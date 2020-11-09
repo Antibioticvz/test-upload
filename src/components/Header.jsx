@@ -180,7 +180,7 @@ export const Header = () => {
               styles={{ marginTop: "-8px" }}
             />
             <Typography className={classes.headerReadtronic}>
-              ReadtronicL
+              Readtronic
             </Typography>
 
             <div className={classes.grow} />
