@@ -115,7 +115,7 @@ const useStylesComponent = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       backgroundPositionY: "bottom",
-      backgroundSize: "90%",
+      backgroundSize: "80%",
       marginTop: 25,
     },
   },
