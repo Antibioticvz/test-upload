@@ -114,7 +114,13 @@ export const OurStory = () => {
         <Grid item xs={false} sm={1}></Grid>
         <Grid className={classes.avatarContainer} item xs={12} sm={2}>
           <Hidden xsDown>
-            <img className={classes.avatar} src={Kevin} alt="" />
+            <img 
+            className={classes.avatar}
+              src={Kevin}
+              width="80px"
+              height="80px" 
+              alt="" 
+            />
             <Typography className={classes.name} variant="body1">
               Kevin Gaffney
             </Typography>
