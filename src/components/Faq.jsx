@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 160,
 
     [theme.breakpoints.down("sm")]: {
+      marginTop: 60,
       marginBottom: 60,
     },
   },
@@ -26,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.27",
     letterSpacing: "normal",
     textAlign: "center",
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 26,
+    },
   },
   subHeader: {
     fontSize: 15,
@@ -35,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 74,
 
     [theme.breakpoints.down("sm")]: {
-      marginTop: 22,
-      marginBottom: 22,
+      display: 'none'
     },
   },
   accordionContainer: {
@@ -54,11 +58,20 @@ const useStyles = makeStyles((theme) => ({
   faqText: {
     fontSize: 15,
   },
+  questionImgContainer: {
+    display: 'flex',
+
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 30,
+      marginBottom: 30,
+    },
+  },
   questionImg: {
     width: "80%",
 
     [theme.breakpoints.down("sm")]: {
-      display: "none",
+      margin: "auto",
+      width: "60%",
     },
   },
 }));
@@ -82,7 +95,9 @@ export const FAQ = () => {
 
       <Grid className={classes.gridContainer} container>
         <Grid item xs={12} sm={6}>
+          <div className={classes.questionImgContainer}>
           <img src={Faq} className={classes.questionImg} alt="" />
+          </div>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Accordion
