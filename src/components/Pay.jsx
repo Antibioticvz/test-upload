@@ -9,6 +9,7 @@ import Free from "../images/free.svg";
 import Basic from "../images/Basic.svg";
 import Pro from "../images/pro.svg";
 import Check from "../images/check.svg";
+import CheckRed from "../images/checkRed.svg";
 import No from "../images/no.svg";
 import Flag from "../images/flag.svg";
 import Vip from "../images/vip.svg";
@@ -149,14 +150,36 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     fontWeight: "bold",
     lineHeight: "1.12",
-    color: "#292d34",
+    color: "#292D34",
+  },
+  listTextOverline: {
+    fontFamily: "Open Sans",
+    fontSize: 14,
+    fontWeight: "bold",
+    lineHeight: "1.12",
+    color: "#757E75",
+    textDecoration: 'line-through'
+  },
+  listTextGray: {
+    fontFamily: "Open Sans",
+    fontSize: 14,
+    fontWeight: "bold",
+    lineHeight: "1.12",
+    color: "#757E75",
+  },
+  listTextGold: {
+    fontFamily: "Open Sans",
+    fontSize: 14,
+    fontWeight: "bold",
+    lineHeight: "1.12",
+    color: "#FFC148",
   },
   listTextNo: {
     fontFamily: "Open Sans",
     fontSize: 14,
     fontWeight: "bold",
     lineHeight: "1.12",
-    color: "#757e75",
+    color: "#757E75",
   },
   buttonContainer: {
     margin: "34px auto",
@@ -299,13 +322,15 @@ const Card = ({
   );
 };
 
-const ListItem = ({ condition, text }) => {
+const ListItem = ({ condition, text, textClass = 'listText' }) => {
   const classes = useStyles();
 
   const icon = () => {
     switch (condition) {
       case "check":
         return <img src={Check} alt=''/>;
+      case "checkRed":
+        return <img src={CheckRed} alt=''/>;
       case "no":
         return <img src={No} alt=''/>;
       case "playBasic":
@@ -323,7 +348,7 @@ const ListItem = ({ condition, text }) => {
       <div className={classes.listItemIcon}>{icon(condition)}</div>
       <div className={classes.listItemText}>
         <Typography
-          className={condition !== "no" ? classes.listText : classes.listTextNo}
+          className={classes[textClass]}
           variant="body1"
         >
           {text}
@@ -365,10 +390,11 @@ export const Pay = () => {
                     condition="check"
                     text="Website & Chrome Ext. Upload"
                   />
-                  <ListItem condition="no" text="Advertisements" />
+                  <ListItem condition="checkRed" text="Advertisements" textClass="listTextGray"/>
                   <ListItem
                     condition="no"
                     text="Unlimited Access to World-Class HD Voices"
+                    textClass="listTextOverline"
                   />
                   <ListItem condition="playBasic" text="Basic Voice Sample" />
 
@@ -402,10 +428,11 @@ export const Pay = () => {
                     condition="check"
                     text="Website & Chrome Ext. Upload"
                   />
-                  <ListItem condition="check" text="No Ads" />
+                  <ListItem condition="check" text="No Ads" textClass="listTextGold"/>
                   <ListItem
                     condition="no"
                     text="Unlimited Access to World-Class HD Voices"
+                    textClass="listTextOverline"
                   />
                   <ListItem condition="playBasic" text="Basic Voice Sample" />
 
@@ -442,10 +469,11 @@ export const Pay = () => {
                     condition="check"
                     text="Website & Chrome Ext. Upload"
                   />
-                  <ListItem condition="check" text="No Ads" />
+                  <ListItem condition="check" text="No Ads" textClass="listTextGold"/>
                   <ListItem
                     condition="check"
                     text="Unlimited Access to World-Class HD Voices"
+                    textClass="listTextGold"
                   />
                   <ListItem condition="playPro" text="Pro Voice Sample" />
 
