@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
 
     "& .MuiInputLabel-shrink": {
-      paddingLeft: 4,
+      // paddingLeft: 4,
     },
     "& .MuiInput-underline:after": {
       borderBottomColor: "#fff",
@@ -146,8 +146,8 @@ export const ContactUs = () => {
                         fullWidth
                         multiline
                         rows={8}
-                        placeholder=" Please enter your message here"
-                        label=" How can we help? What can we do better?"
+                        placeholder="Please enter your message here"
+                        label="How can we help? Can we do better?"
                       />
                     </Grid>
                   </Grid>
