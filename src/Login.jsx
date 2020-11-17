@@ -8,13 +8,18 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import IconButton from "@material-ui/core/IconButton";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import FirebaseContext from "./Firebase";
 import Context from "./ContextAuth";
+import { QrDialog } from "./components/QrDialog";
 
 import BGMain from "./images/BGMain.svg";
 import BGMobile from "./images/BGMobile.svg";
 import EmailLink from "./images/emailLink.svg";
+import Istore from "./images/Istore.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {},
   gridMidContainer: {
-    background: "#fff",
+    background: "none",
     marginTop: 8,
   },
   midContainer: {
@@ -108,6 +113,12 @@ const useStyles = makeStyles((theme) => ({
   boldBox: {
     display: 'inline-flex',
   },
+  buttonContainer: {
+    display: 'flex',
+  },
+  storeButtons: {
+    margin: 'auto',
+  }
 }));
 
 const Old = () => {
@@ -216,11 +227,16 @@ const Old = () => {
 };
 
 const New = () => {
-  const classes = useStyles();
+  const [open, setOpen] = useState(false);
 
+  const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <>
+      <QrDialog open={open} handleClose={() => setOpen(false)} />
+
       <br />
       <Typography className={classes.headerText} variant="h4">
       Create your account in <br/> the Readtronic app
@@ -243,7 +259,22 @@ const New = () => {
         4. Perfect! Now you can login using this email.
       </Typography>
 
-      <div style={{ height: "64px" }} />
+      <br />
+      <div className={classes.buttonContainer}>
+        <IconButton
+          className={classes.storeButtons}
+          onClick={() =>
+            matches
+            ? setOpen(true)
+            : window.location.replace(
+              "https://www.apple.com/ios/app-store/"
+              )
+            }
+            aria-label="Store"
+            >
+          <img src={Istore} alt="Istore" />
+        </IconButton>
+      </div>
     </>
   );
 };
