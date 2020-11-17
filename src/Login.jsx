@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 
 import FirebaseContext from "./Firebase";
@@ -13,6 +14,7 @@ import Context from "./ContextAuth";
 
 import BGMain from "./images/BGMain.svg";
 import BGMobile from "./images/BGMobile.svg";
+import EmailLink from "./images/emailLink.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,6 +74,40 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
   },
+  headerImgContainer: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "center",
+  },
+  headerImg: {
+    margin: 'auto',
+    marginTop: '10%',
+    paddingLeft: 33,
+  },
+  headerText: {
+    textAlign: "center",
+    fontSize: 20,
+    marginTop: 12,
+    color: '#292D34',
+    fontWeight: "bold",
+    fontFamily: "Fira Sans",
+  },
+  mainText: {
+    textAlign: "center",
+    fontSize: 16,
+    margin: '3px 0 3px',
+    color: '#707070',
+    fontFamily: "Fira Sans",
+  },
+  ruleText: {
+    fontSize: 16,
+    margin: '3px 0 3px',
+    color: '#292D34',
+    fontFamily: "Fira Sans",
+  },
+  boldBox: {
+    display: 'inline-flex',
+  },
 }));
 
 const Old = () => {
@@ -81,30 +117,31 @@ const Old = () => {
   const { setAuth } = useContext(Context);
 
   const [errMessage, setErrMessage] = useState(null);
+  const [submit, setSubmit] = useState(false);
   const [email, setEmail] = useState("");
 
-  const handlPasswordSignup = () =>
+  const handlePasswordSignup = () =>
     firebase
       .doSendSignInLinkToEmail(email)
-      .then(() => firebase
-        .doSendSignInLinkToEmail(email).then(()=>localStorage.setItem(
-          process.env.REACT_APP_LOCAL_STORAGE,
-          email
-        ))
-        .catch(({ message }) => setErrMessage(message)))
+      .then(() => {
+        firebase
+          .doSendSignInLinkToEmail(email).then(()=>localStorage.setItem(
+            process.env.REACT_APP_LOCAL_STORAGE,
+            email
+          ))
+        setSubmit(true)
+      })
+      .catch(({ message }) => setErrMessage(message))
 
+  const handleErrorMsg = useCallback(message => {
+    localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
+    firebase.doSignOut();
+    setErrMessage(message);
+  },[firebase]);
 
-        const handleErrorMsg = useCallback(message => {
-          localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
-          firebase.doSignOut();
-          setErrMessage(message);
-        },[firebase]);
-
-useEffect(()=>{
-  console.log('window.location.href')
-  console.log(window.location.href)
+  useEffect(()=>{
   // Confirm the link is a sign-in with email link.
-if (firebase.isSignInWithEmailLink()) {
+  if (firebase.isSignInWithEmailLink()) {
   // Additional state parameters can also be passed via URL.
   // This can be used to continue the user's intended action before triggering
   // the sign-in operation.
@@ -122,24 +159,46 @@ if (firebase.isSignInWithEmailLink()) {
       // Clear email from storage.
       localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
       setAuth(true);
+      navigate("/upload");
     })
-    .catch((error) => {handleErrorMsg(error.message)});
-}
-},[firebase, handleErrorMsg, setAuth])
-
+    .catch((error) => handleErrorMsg(error.message));
+  }
+  },[firebase, handleErrorMsg, setAuth]);
 
   return (
     <>
-      <TextField
+      <div className={classes.headerImgContainer}>
+        <img 
+          className={classes.headerImg}
+          src={EmailLink} 
+          alt="" 
+          />
+      </div>
+
+      <Typography className={classes.headerText} variant="h4">
+        {submit ? 'Check Your Email' : 'Request Magic Link Email'}
+      </Typography>
+
+      <Typography className={classes.mainText} variant="body1">
+        {submit && 'We sent you an email with to ' }
+        {submit && <Box className={classes.boldBox} fontWeight="fontWeightBold">{email}</Box> }
+        {!submit && 'Please enter your registered email below & click the link in your email to login'}
+      </Typography>
+      {submit && <br />}
+      {submit && <Typography className={classes.mainText} variant="body1">
+        Just click the "Sign in to Readtronic" link and you'll be magically logged in! 
+      </Typography>}
+
+      {!submit && <TextField
         value={email}
         className={classes.field}
         fullWidth
         label="Your Email Address"
         onChange={(e) => setEmail(e.currentTarget.value)}
-      />
+      />}
 
       <Typography color="error">{errMessage}</Typography>
-      <Button
+      {!submit && <Button
         disabled={
           email === "" ||
           !EmailValidator.validate(email)
@@ -148,10 +207,10 @@ if (firebase.isSignInWithEmailLink()) {
         fullWidth
         variant="contained"
         color="primary"
-        onClick={() => handlPasswordSignup()}
+        onClick={() => handlePasswordSignup()}
       >
         Send Magic Link
-      </Button>
+      </Button>}
     </>
   );
 };
@@ -162,17 +221,28 @@ const New = () => {
 
   return (
     <>
-      
-      
-      <Button
-        className={classes.submitButton}
-        fullWidth
-        variant="contained"
-        color="primary"
-        onClick={() => {}}
-      >
-        Submit
-      </Button>
+      <br />
+      <Typography className={classes.headerText} variant="h4">
+      Create your account in <br/> the Readtronic app
+      </Typography>
+      <br />
+
+      <Typography className={classes.ruleText} variant="body1">
+        1. Install & open the Readtronic app
+      </Typography>
+
+      <Typography className={classes.ruleText} variant="body1">
+        2. Click "Already have an account"
+      </Typography>
+
+      <Typography className={classes.ruleText} variant="body1">
+        3. Enter your email & open magic link
+      </Typography>
+
+      <Typography className={classes.ruleText} variant="body1">
+        4. Perfect! Now you can login using this email.
+      </Typography>
+
       <div style={{ height: "64px" }} />
     </>
   );
