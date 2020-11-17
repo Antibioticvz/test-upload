@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { navigate } from "hookrouter";
 import * as EmailValidator from "email-validator";
 import { makeStyles } from "@material-ui/core/styles";
@@ -74,28 +74,59 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const New = () => {
+const Old = () => {
   const classes = useStyles();
   const firebase = useContext(FirebaseContext);
+
   const { setAuth } = useContext(Context);
 
   const [errMessage, setErrMessage] = useState(null);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handlPasswordSignup = () =>
     firebase
-      .doCreateUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        setAuth(true);
-        localStorage.setItem(
+      .doSendSignInLinkToEmail(email)
+      .then(() => firebase
+        .doSendSignInLinkToEmail(email).then(()=>localStorage.setItem(
           process.env.REACT_APP_LOCAL_STORAGE,
-          authUser.user.uid
-        );
-      })
-      .then(() => navigate("/upload"))
-      .catch(({ message }) => setErrMessage(message));
+          email
+        ))
+        .catch(({ message }) => setErrMessage(message)))
+
+
+        const handleErrorMsg = useCallback(message => {
+          localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
+          firebase.doSignOut();
+          setErrMessage(message);
+        },[firebase]);
+
+useEffect(()=>{
+  console.log('window.location.href')
+  console.log(window.location.href)
+  // Confirm the link is a sign-in with email link.
+if (firebase.isSignInWithEmailLink()) {
+  // Additional state parameters can also be passed via URL.
+  // This can be used to continue the user's intended action before triggering
+  // the sign-in operation.
+  // Get the email if available. This should be available if the user completes
+  // the flow on the same device where they started it.
+  let email = localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE);
+  if (!email) {
+    // User opened the link on a different device. To prevent session fixation
+    // attacks, ask the user to provide the associated email again. For example:
+    email = window.prompt('Please provide your email for confirmation');
+  }
+  // The client SDK will parse the code from the link for you.
+  firebase.doSignInWithEmailLink(email)
+    .then((result) => {
+      // Clear email from storage.
+      localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
+      setAuth(true);
+    })
+    .catch((error) => {handleErrorMsg(error.message)});
+}
+},[firebase, handleErrorMsg, setAuth])
+
 
   return (
     <>
@@ -107,38 +138,11 @@ const New = () => {
         onChange={(e) => setEmail(e.currentTarget.value)}
       />
 
-      <TextField
-        value={password}
-        className={classes.field}
-        fullWidth
-        type="password"
-        label="Your Password"
-        onChange={(e) => setPassword(e.currentTarget.value)}
-      />
-
-      <Typography color="error">
-        {password !== confirmPassword &&
-          password !== "" &&
-          confirmPassword !== "" &&
-          "No match"}
-      </Typography>
-
-      <TextField
-        value={confirmPassword}
-        className={classes.field}
-        fullWidth
-        type="password"
-        label="Confirm Password"
-        onChange={(e) => setConfirmPassword(e.currentTarget.value)}
-      />
       <Typography color="error">{errMessage}</Typography>
       <Button
         disabled={
           email === "" ||
-          !EmailValidator.validate(email) ||
-          password === "" ||
-          password.length < 7 ||
-          password !== confirmPassword
+          !EmailValidator.validate(email)
         }
         className={classes.submitButton}
         fullWidth
@@ -146,66 +150,26 @@ const New = () => {
         color="primary"
         onClick={() => handlPasswordSignup()}
       >
-        Create Account
+        Send Magic Link
       </Button>
     </>
   );
 };
 
-const Old = () => {
+const New = () => {
   const classes = useStyles();
-  const firebase = useContext(FirebaseContext);
-  const { setAuth } = useContext(Context);
 
-  const [errMessage, setErrMessage] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleErrorMsg = (message) => {
-    localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
-    firebase.doSignOut();
-    setErrMessage(message);
-  };
-
-  const handlePasswordLogin = () => {
-    firebase
-      .doSignInWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        setAuth(true);
-        localStorage.setItem(
-          process.env.REACT_APP_LOCAL_STORAGE,
-          authUser.user.uid
-        );
-      })
-      .then(() => navigate("/upload"))
-      .catch(({ message }) => handleErrorMsg(message));
-  };
 
   return (
     <>
-      <TextField
-        value={email}
-        className={classes.field}
-        fullWidth
-        label="Your Email Address"
-        onChange={(e) => setEmail(e.currentTarget.value)}
-      />
-      <TextField
-        value={password}
-        className={classes.field}
-        fullWidth
-        type="password"
-        label="Your Password"
-        onChange={(e) => setPassword(e.currentTarget.value)}
-      />
-      <Typography color="error">{errMessage}</Typography>
+      
+      
       <Button
-        disabled={email === "" || password === ""}
         className={classes.submitButton}
         fullWidth
         variant="contained"
         color="primary"
-        onClick={() => handlePasswordLogin()}
+        onClick={() => {}}
       >
         Submit
       </Button>
