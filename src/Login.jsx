@@ -27,11 +27,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
-
-    [theme.breakpoints.down("sm")]: {
-      backgroundImage: `url(${BGMobile})`,
-    },
     marginBottom: 230,
+    
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "40vh",
+      backgroundImage: `url(${BGMobile})`,
+      marginBottom: 0,
+    },
   },
   gridButtons: {
     display: "flex",
@@ -53,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
   screen: {
     padding: "0px 40px 12px",
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "0px 23px 12px",
+    },
   },
   field: {
     marginTop: 16,
@@ -117,6 +123,11 @@ const useStyles = makeStyles((theme) => ({
   boldBox: {
     display: 'inline-flex',
   },
+  linkBox: {
+    display: 'inline-flex',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+  },
   buttonContainer: {
     display: 'flex',
   },
@@ -172,7 +183,6 @@ const Old = () => {
   firebase.doSignInWithEmailLink(email)
     .then((result) => {
       // Clear email from storage.
-      localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
       setAuth(true);
       navigate("/upload");
     })
@@ -230,7 +240,7 @@ const Old = () => {
   );
 };
 
-const New = () => {
+const New = ({ setLoginScreen }) => {
   const [open, setOpen] = useState(false);
 
   const classes = useStyles();
@@ -260,7 +270,7 @@ const New = () => {
       </Typography>
 
       <Typography className={classes.ruleText} variant="body1">
-        4. Perfect! Now you can login using this email.
+        4. Perfect! Now you can <Box className={classes.linkBox} color="#4279F1" onClick={() => setLoginScreen()}>login</Box> using this email.
       </Typography>
 
       <br />
@@ -292,7 +302,7 @@ export const Login = ({ tab }) => {
   const screenToShow = () => {
     switch (screen) {
       case 0:
-        return <New />;
+        return <New setLoginScreen={() => setScreen(1)} />;
       case 1:
         return <Old />;
       default:
