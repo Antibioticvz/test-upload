@@ -39,8 +39,12 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {},
   gridMidContainer: {
-    background: "none",
     marginTop: 8,
+    background: "#fff",
+
+    [theme.breakpoints.down("sm")]: {
+      background: "none",
+    },
   },
   midContainer: {
     borderRadius: 20,
