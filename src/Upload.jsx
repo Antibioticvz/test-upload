@@ -124,6 +124,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     justifyContent: "left",
+    margin: "auto",
   },
   headerText: {
     fontSize: 26,
