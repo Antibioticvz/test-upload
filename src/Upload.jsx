@@ -124,7 +124,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     justifyContent: "left",
-    margin: "auto",
   },
   headerText: {
     fontSize: 26,
@@ -133,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "-1.04",
     textAlign: "left",
     color: "#292d34",
+    margin: "auto 0",
   },
   headerImg: {
     width: 60,
