@@ -68,10 +68,12 @@ const useStyles = makeStyles((theme) => ({
   },
   questionImg: {
     width: "80%",
+    height: '80%',
 
     [theme.breakpoints.down("sm")]: {
       margin: "auto",
       width: "60%",
+      height: '60%',
     },
   },
 }));

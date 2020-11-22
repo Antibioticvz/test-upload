@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="115" height="36" viewBox="0 0 146.167 42"><g transform="translate(-2690 -1260)"><path d="M0,0H146.167l-14.21,21.35L146.167,42H0Z" transform="translate(2690 1260)" fill="#ffc148"/><text transform="translate(2752 1276)" fill="#fff" font-size="17" font-family="Fira Sans-Regular, Fira Sans" letter-spacing="-0.04em"><tspan x="-47.702" y="0">Early Adopter</tspan><tspan x="-31.187" y="21">Discount</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="115" height="36" viewBox="0 0 146.167 42">
+  <g id="Group_3493" data-name="Group 3493" transform="translate(-2690 -1260)">
+    <path id="Path_2948" data-name="Path 2948" d="M0,0H146.167l-14.21,21.35L146.167,42H0Z" transform="translate(2690 1260)" fill="#ffc148"/>
+    <g id="Group_3492" data-name="Group 3492">
+      <g id="Group_3491" data-name="Group 3491">
+        <text id="Early_Adopter_Discount" data-name="Early Adopter
+Discount" transform="translate(2752 1276)" fill="#fff" font-size="17" font-family="FiraSans-Regular, Fira Sans" letter-spacing="-0.04em"><tspan x="-47.702" y="0">Early Adopter</tspan><tspan x="-31.187" y="21">Discount</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

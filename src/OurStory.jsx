@@ -28,9 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   gridContainer: {},
-  textContainer: {
-    //backgroundColor: "#fff",
-  },
+  textContainer: {},
   avatar: {
     margin: "118px auto 0px",
   },
@@ -116,7 +114,13 @@ export const OurStory = () => {
         <Grid item xs={false} sm={1}></Grid>
         <Grid className={classes.avatarContainer} item xs={12} sm={2}>
           <Hidden xsDown>
-            <img className={classes.avatar} src={Kevin} width="80px" alt="" />
+            <img 
+            className={classes.avatar}
+              src={Kevin}
+              width="80px"
+              height="80px" 
+              alt="" 
+            />
             <Typography className={classes.name} variant="body1">
               Kevin Gaffney
             </Typography>
@@ -137,8 +141,8 @@ export const OurStory = () => {
               <img
                 className={classes.mobileAvatar}
                 src={Kevin}
-                width="80px"
-                height="80px"
+                width="50px"
+                height="50px"
                 alt=""
               />
               <div className={classes.mobileNameContainer}>

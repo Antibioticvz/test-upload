@@ -31,6 +31,15 @@ class Firebase {
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
+  doSendSignInLinkToEmail = (email) => this.auth.sendSignInLinkToEmail(email, {
+    url: window.location.href,
+    handleCodeInApp: true
+  });
+
+  isSignInWithEmailLink = () => this.auth.isSignInWithEmailLink(window.location.href)
+
+  doSignInWithEmailLink = (email) => this.auth.signInWithEmailLink(email, window.location.href)
+
   doSignOut = () => this.auth.signOut();
 
   doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);

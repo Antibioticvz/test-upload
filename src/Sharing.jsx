@@ -44,7 +44,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 33,
     marginTop: 16,
   },
-  button: {},
+  button: {
+    fontSize: 15,
+    fontFamily: "Fira Sans",
+    fontWeight: "bold",
+    color: "#FFFFFF",
+  },
   gridContainer: {
     paddingLeft: "6%",
     paddingRight: "6%",

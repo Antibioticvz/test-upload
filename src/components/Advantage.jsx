@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
     textAlign: "center",
     lineHeight: "1",
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 28,
+    },
   },
   secondHeader: {
     fontSize: 23,
@@ -24,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 20,
     textAlign: "center",
     lineHeight: "1",
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 22,
+    },
   },
   cardsContainer: {
     paddingBottom: 20,
@@ -86,7 +94,7 @@ export const Advantage = () => {
         The Readtronic Advantage
       </Typography>
       <Typography className={classes.secondHeader} variant="h3">
-        Fastest Way to Get Information off Your Screen and Into Your Head
+        Fastest Way to Get Information Off Your Screen and Into Your Head
       </Typography>
       <br />
       <br />

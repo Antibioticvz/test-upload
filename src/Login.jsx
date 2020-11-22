@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import { navigate } from "hookrouter";
 import * as EmailValidator from "email-validator";
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,13 +6,20 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import IconButton from "@material-ui/core/IconButton";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import FirebaseContext from "./Firebase";
 import Context from "./ContextAuth";
+import { QrDialog } from "./components/QrDialog";
 
 import BGMain from "./images/BGMain.svg";
 import BGMobile from "./images/BGMobile.svg";
+import EmailLink from "./images/emailLink.svg";
+import Istore from "./images/Istore.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,11 +27,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${BGMain})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
-
-    [theme.breakpoints.down("sm")]: {
-      backgroundImage: `url(${BGMobile})`,
-    },
     marginBottom: 230,
+    
+    [theme.breakpoints.down("sm")]: {
+      minHeight: "40vh",
+      backgroundImage: `url(${BGMobile})`,
+      marginBottom: 0,
+    },
   },
   gridButtons: {
     display: "flex",
@@ -32,8 +41,12 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {},
   gridMidContainer: {
-    background: "#fff",
     marginTop: 8,
+    background: "#fff",
+
+    [theme.breakpoints.down("sm")]: {
+      background: "none",
+    },
   },
   midContainer: {
     borderRadius: 20,
@@ -42,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
   screen: {
     padding: "0px 40px 12px",
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "0px 23px 12px",
+    },
   },
   field: {
     marginTop: 16,
@@ -72,144 +89,206 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
   },
+  headerImgContainer: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "center",
+  },
+  headerImg: {
+    margin: 'auto',
+    marginTop: '10%',
+    paddingLeft: 33,
+  },
+  headerText: {
+    textAlign: "center",
+    fontSize: 20,
+    marginTop: 12,
+    color: '#292D34',
+    fontWeight: "bold",
+    fontFamily: "Fira Sans",
+  },
+  mainText: {
+    textAlign: "center",
+    fontSize: 16,
+    margin: '3px 0 3px',
+    color: '#707070',
+    fontFamily: "Fira Sans",
+  },
+  ruleText: {
+    fontSize: 16,
+    margin: '3px 0 3px',
+    color: '#292D34',
+    fontFamily: "Fira Sans",
+  },
+  boldBox: {
+    display: 'inline-flex',
+  },
+  linkBox: {
+    display: 'inline-flex',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+  },
+  buttonContainer: {
+    display: 'flex',
+  },
+  storeButtons: {
+    margin: 'auto',
+  }
 }));
 
-const New = () => {
+const Old = () => {
   const classes = useStyles();
   const firebase = useContext(FirebaseContext);
+
   const { setAuth } = useContext(Context);
 
   const [errMessage, setErrMessage] = useState(null);
+  const [submit, setSubmit] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handlPasswordSignup = () =>
+  const handlePasswordSignup = () =>
     firebase
-      .doCreateUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        setAuth(true);
-        localStorage.setItem(
-          process.env.REACT_APP_LOCAL_STORAGE,
-          authUser.user.uid
-        );
+      .doSendSignInLinkToEmail(email)
+      .then(() => {
+        firebase
+          .doSendSignInLinkToEmail(email).then(()=>localStorage.setItem(
+            process.env.REACT_APP_LOCAL_STORAGE,
+            email
+          ))
+        setSubmit(true)
       })
-      .then(() => navigate("/upload"))
-      .catch(({ message }) => setErrMessage(message));
+      .catch(({ message }) => setErrMessage(message))
+
+  const handleErrorMsg = useCallback(message => {
+    localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
+    firebase.doSignOut();
+    setErrMessage(message);
+  },[firebase]);
+
+  useEffect(()=>{
+  // Confirm the link is a sign-in with email link.
+  if (firebase.isSignInWithEmailLink()) {
+  // Additional state parameters can also be passed via URL.
+  // This can be used to continue the user's intended action before triggering
+  // the sign-in operation.
+  // Get the email if available. This should be available if the user completes
+  // the flow on the same device where they started it.
+  let email = localStorage.getItem(process.env.REACT_APP_LOCAL_STORAGE);
+  if (!email) {
+    // User opened the link on a different device. To prevent session fixation
+    // attacks, ask the user to provide the associated email again. For example:
+    email = window.prompt('Please provide your email for confirmation');
+  }
+  // The client SDK will parse the code from the link for you.
+  firebase.doSignInWithEmailLink(email)
+    .then((result) => {
+      // Clear email from storage.
+      setAuth(true);
+      navigate("/upload");
+    })
+    .catch((error) => handleErrorMsg(error.message));
+  }
+  },[firebase, handleErrorMsg, setAuth]);
 
   return (
     <>
-      <TextField
+      <div className={classes.headerImgContainer}>
+        <img 
+          className={classes.headerImg}
+          src={EmailLink} 
+          alt="" 
+          />
+      </div>
+
+      <Typography className={classes.headerText} variant="h4">
+        {submit ? 'Check Your Email' : 'Request Magic Link Email'}
+      </Typography>
+
+      <Typography className={classes.mainText} variant="body1">
+        {submit && 'We sent you an email with to ' }
+        {submit && <Box className={classes.boldBox} fontWeight="fontWeightBold">{email}</Box> }
+        {!submit && 'Please enter your registered email below & click the link in your email to login'}
+      </Typography>
+      {submit && <br />}
+      {submit && <Typography className={classes.mainText} variant="body1">
+        Just click the "Sign in to Readtronic" link and you'll be magically logged in! 
+      </Typography>}
+
+      {!submit && <TextField
         value={email}
         className={classes.field}
         fullWidth
         label="Your Email Address"
         onChange={(e) => setEmail(e.currentTarget.value)}
-      />
+      />}
 
-      <TextField
-        value={password}
-        className={classes.field}
-        fullWidth
-        type="password"
-        label="Your Password"
-        onChange={(e) => setPassword(e.currentTarget.value)}
-      />
-
-      <Typography color="error">
-        {password !== confirmPassword &&
-          password !== "" &&
-          confirmPassword !== "" &&
-          "No match"}
-      </Typography>
-
-      <TextField
-        value={confirmPassword}
-        className={classes.field}
-        fullWidth
-        type="password"
-        label="Confirm Password"
-        onChange={(e) => setConfirmPassword(e.currentTarget.value)}
-      />
       <Typography color="error">{errMessage}</Typography>
-      <Button
+      {!submit && <Button
         disabled={
           email === "" ||
-          !EmailValidator.validate(email) ||
-          password === "" ||
-          password.length < 7 ||
-          password !== confirmPassword
+          !EmailValidator.validate(email)
         }
         className={classes.submitButton}
         fullWidth
         variant="contained"
         color="primary"
-        onClick={() => handlPasswordSignup()}
+        onClick={() => handlePasswordSignup()}
       >
-        Create Account
-      </Button>
+        Send Magic Link
+      </Button>}
     </>
   );
 };
 
-const Old = () => {
+const New = ({ setLoginScreen }) => {
+  const [open, setOpen] = useState(false);
+
   const classes = useStyles();
-  const firebase = useContext(FirebaseContext);
-  const { setAuth } = useContext(Context);
-
-  const [errMessage, setErrMessage] = useState(null);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleErrorMsg = (message) => {
-    localStorage.removeItem(process.env.REACT_APP_LOCAL_STORAGE);
-    firebase.doSignOut();
-    setErrMessage(message);
-  };
-
-  const handlePasswordLogin = () => {
-    firebase
-      .doSignInWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        setAuth(true);
-        localStorage.setItem(
-          process.env.REACT_APP_LOCAL_STORAGE,
-          authUser.user.uid
-        );
-      })
-      .then(() => navigate("/upload"))
-      .catch(({ message }) => handleErrorMsg(message));
-  };
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
     <>
-      <TextField
-        value={email}
-        className={classes.field}
-        fullWidth
-        label="Your Email Address"
-        onChange={(e) => setEmail(e.currentTarget.value)}
-      />
-      <TextField
-        value={password}
-        className={classes.field}
-        fullWidth
-        type="password"
-        label="Your Password"
-        onChange={(e) => setPassword(e.currentTarget.value)}
-      />
-      <Typography color="error">{errMessage}</Typography>
-      <Button
-        disabled={email === "" || password === ""}
-        className={classes.submitButton}
-        fullWidth
-        variant="contained"
-        color="primary"
-        onClick={() => handlePasswordLogin()}
-      >
-        Submit
-      </Button>
-      <div style={{ height: "64px" }} />
+      <QrDialog open={open} handleClose={() => setOpen(false)} />
+
+      <br />
+      <Typography className={classes.headerText} variant="h4">
+      Create your account in <br/> the Readtronic app
+      </Typography>
+      <br />
+
+      <Typography className={classes.ruleText} variant="body1">
+        1. Install & open the Readtronic app
+      </Typography>
+
+      <Typography className={classes.ruleText} variant="body1">
+        2. Click "Already have an account"
+      </Typography>
+
+      <Typography className={classes.ruleText} variant="body1">
+        3. Enter your email & open magic link
+      </Typography>
+
+      <Typography className={classes.ruleText} variant="body1">
+        4. Perfect! Now you can <Box className={classes.linkBox} color="#4279F1" onClick={() => setLoginScreen()}>login</Box> using this email.
+      </Typography>
+
+      <br />
+      <div className={classes.buttonContainer}>
+        <IconButton
+          className={classes.storeButtons}
+          onClick={() =>
+            matches
+            ? setOpen(true)
+            : window.location.replace(
+              "https://www.apple.com/ios/app-store/"
+              )
+            }
+            aria-label="Store"
+            >
+          <img src={Istore} alt="Istore" />
+        </IconButton>
+      </div>
     </>
   );
 };
@@ -223,7 +302,7 @@ export const Login = ({ tab }) => {
   const screenToShow = () => {
     switch (screen) {
       case 0:
-        return <New />;
+        return <New setLoginScreen={() => setScreen(1)} />;
       case 1:
         return <Old />;
       default:
